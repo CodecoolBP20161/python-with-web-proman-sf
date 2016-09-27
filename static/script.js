@@ -55,7 +55,7 @@ $(document).ready(function () {
         var board = database.getData();
         for(var i = 0; i < board.length; i++){
             if(board[i]['type'] === 'board') {
-                $('<div>' + board[i]['title'] + '</div>').addClass('col-md-3').appendTo($('.board'))
+                $('<div>' + board[i]['title'] + '</div>').addClass('col-md-3 board_block').appendTo($('.board'))
             }
         }
     };
@@ -77,6 +77,3 @@ $(document).ready(function () {
         listBoards();
     });
 });
-
-
-

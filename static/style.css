@@ -6,3 +6,7 @@
 p {
     font-size: 33px;
 }
+
+.col-md-3.board_block{
+    height: 50px;
+}
