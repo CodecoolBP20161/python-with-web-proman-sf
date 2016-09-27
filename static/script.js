@@ -47,6 +47,15 @@ $(document).ready(function () {
 
     // list out existing boards from storage +title
     var listBoards = function () {
+        var state = new StorageState(new LocalStorage());
+        var board = state.getDate();
+        var textBoard = "";
+        for(var i = 0; i < board.length; i++){
+            if(board[i].type === 'board') {
+                text += board[i].title + "<br>";
+            }
+        }
+        document.getElementById("boards").innerHTML = textBoard;
 
     };
     listBoards();
