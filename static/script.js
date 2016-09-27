@@ -53,14 +53,12 @@ $(document).ready(function () {
 
     // list out existing boards from storage
     var listBoards = function () {
-
         var board = database.getData().sort(function(a, b){
             return b['id'] - a['id'];
         });
-
         for(var i = 0; i < board.length; i++){
             if(board[i]['type'] === 'board') {
-                $('<div>' + board[i]['title'] + '</div>').addClass('col-md-3 board_block').appendTo($('.board'));
+                $('<div>' + board[i]['title'] + '</div>').addClass('col-md-3 col-md-6 board_block').appendTo($('.board'));
             }
         }
     };

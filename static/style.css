@@ -7,14 +7,14 @@ p {
     font-size: 33px;
 }
 
-.col-md-3.board_block{
+.col-md-3.col-md-6.board_block{
     height: 60px;
     line-height: 48px;
-    background: coral;
+    background: url('/static/img/water.jpg');
     font-size: 15px;
     font-style: oblique;
     font-weight: bold;
-    color: white;
+    color: antiquewhite;
     text-align: center;
     border-style: solid;
     border-color: white;
@@ -27,7 +27,6 @@ p {
     border-bottom-left-radius: 40px 26px;
     border-bottom-right-radius: 40px 26px;
 }
-
 
 
 
