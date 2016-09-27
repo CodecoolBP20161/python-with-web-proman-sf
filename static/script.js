@@ -1,6 +1,7 @@
 // need to implement the functions
-function Board(title){
-
+function Board(board, title){
+    this.type = board;
+    this.title = title;
 }
 
 
