@@ -8,6 +8,27 @@ p {
 }
 
 .col-md-3.board_block{
-    height: 50px;
+    height: 60px;
+    line-height: 48px;
+    background: coral;
+    font-size: 15px;
+    font-style: oblique;
+    font-weight: bold;
+    color: white;
     text-align: center;
+    border-style: solid;
+    border-color: white;
+    border-top-width: 6px;
+    border-bottom-width: 6px;
+    border-left-width: 20px;
+    border-right-width: 20px;
+    border-top-left-radius: 40px 26px;
+    border-top-right-radius: 40px 26px;
+    border-bottom-left-radius: 40px 26px;
+    border-bottom-right-radius: 40px 26px;
 }
+
+
+
+
+
