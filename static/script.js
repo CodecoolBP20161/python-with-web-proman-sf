@@ -47,8 +47,24 @@ function LocalStorage(localStorage){
     };
 }
 
-// need to implement the functions
 $(document).ready(function () {
+    var database = new StorageState(new LocalStorage(localStorage))
+    //popup
+    $(".popup").hide();
+
+    $("#btn").click(function(){
+        $(".popup").dialog();
+    });
+    $("#save").click(function(){
+        var $board_title = $(".title").val()
+        var new_board = new Board("board",$board_title)
+        database.saveData(new_board)
+        $(".board").append("<p class=\"text-center\">" + $board_title + "</p>")
+         $('.title').val("");
+        $(".popup").dialog('close');
+    });
+
+    // need to implement the functions
     $newBoard = $('.new_board');
 
     // list out existing boards from storage +title
