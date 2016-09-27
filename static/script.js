@@ -27,19 +27,26 @@ function StorageState(storage){
 
 
 // need to implement the functions
-function LocalStorage(){
-    this.getData = function () {
+function LocalStorage(localStorage){
+    this.localStorage = localStorage;
 
+    this.getData = function () {
+        var entries = [];
+        for(var i = 0; i < this.localStorage.length; i++){
+            entries.push(this.localStorage.getItem(this.localStorage.key[i]));
+        }
+        return entries
     };
 
-    this.saveData = function () {
-
+    this.saveData = function (entry) {
+        this.localStorage.setItem(entry, JSON.stringify(entry))
     };
 
     this.formatData = function () {
-
+        // didn't need to format in this case!
     };
 }
+
 
 // need to implement the functions
 $(document).ready(function () {
@@ -55,5 +62,4 @@ $(document).ready(function () {
     $newBoard.click(function () {
         // need implement save button click new board (on popup)
     });
-
 });
