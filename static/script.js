@@ -50,7 +50,7 @@ function LocalStorage(localStorage){
 
 $(document).ready(function () {
     var database = new StorageState(new LocalStorage(localStorage));
-
+    $('.board').hide();
     // list out existing boards from storage
     var listBoards = function () {
         var board = database.getData().sort(function(a, b){
@@ -61,6 +61,7 @@ $(document).ready(function () {
                 $('<div>' + board[i]['title'] + '</div>').addClass('col-md-3 col-md-6 board_block').appendTo($('.board'));
             }
         }
+        $('.board').show('slow');
     };
     listBoards();
 
@@ -68,7 +69,7 @@ $(document).ready(function () {
     $(".popup").hide();
 
     $("#btn").click(function(){
-        $(".popup").dialog();
+        $(".popup").dialog({ show: 'fade' });
     });
     $("#save").click(function(){
         var $board_title = $(".title").val();
@@ -77,6 +78,6 @@ $(document).ready(function () {
         $('.title').val("");
         $(".popup").dialog('close');
         $('.board').empty();
-        listBoards();
+        listBoards()
     });
 });
