@@ -1,4 +1,4 @@
-// need to implement the functions
+
 function Board(board, title){
     this.type = board;
     this.title = title;
@@ -7,37 +7,43 @@ function Board(board, title){
 
 function StorageState(storage){
     this.storage = storage;
+    this.localStorage = storage.localStorage;
 
     this.changeStorage = function (storage) {
         this.storage = storage;
     };
 
     this.getData = function () {
-        this.storage.getData()
+        return this.storage.getData()
     };
 
-    this.saveData = function () {
-        this.storage.saveData()
+    this.saveData = function (entry) {
+        return this.storage.saveData(entry)
     };
 
     this.formatData = function () {
-        this.storage.formatData()
+        return this.storage.formatData()
     };
 }
 
 
-// need to implement the functions
-function LocalStorage(){
-    this.getData = function () {
+function LocalStorage(localStorage){
+    this.localStorage = localStorage;
 
+    this.getData = function () {
+        var entries = [];
+        for(var i = 0; i < this.localStorage.length; i++) {
+            entries.push(JSON.parse(this.localStorage[this.localStorage.key(i)]));
+        }
+        return entries;
     };
 
-    this.saveData = function () {
-
+    this.saveData = function (entry) {
+        this.localStorage.setItem(String(this.localStorage.length), JSON.stringify(entry))
     };
 
     this.formatData = function () {
-
+        // didn't need to format in this case!
     };
 }
 
@@ -64,5 +70,4 @@ $(document).ready(function () {
     $newBoard.click(function () {
         // need implement save button click new board (on popup)
     });
-
 });
