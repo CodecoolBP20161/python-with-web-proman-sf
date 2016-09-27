@@ -48,6 +48,7 @@ function LocalStorage(localStorage){
 }
 
 $(document).ready(function () {
+    var database = new StorageState(new LocalStorage(localStorage))
     //popup
     $(".popup").hide();
 
@@ -56,11 +57,13 @@ $(document).ready(function () {
     });
     $("#save").click(function(){
         var $board_title = $(".title").val()
+        var new_board = new Board("board",$board_title)
+        database.saveData(new_board)
         $(".board").append("<p class=\"text-center\">" + $board_title + "</p>")
          $('.title').val("");
         $(".popup").dialog('close');
     });
-    
+
     // need to implement the functions
     $newBoard = $('.new_board');
 
