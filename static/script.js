@@ -1,3 +1,4 @@
+// need to implement the functions
 function Board(title){
 
 }
@@ -24,6 +25,7 @@ function StorageState(storage){
 }
 
 
+// need to implement the functions
 function LocalStorage(){
     this.getData = function () {
 
@@ -37,3 +39,20 @@ function LocalStorage(){
 
     };
 }
+
+// need to implement the functions
+$(document).ready(function () {
+    $newBoard = $('.new_board');
+
+    // list out existing boards from storage +title
+    var listBoards = function () {
+
+    };
+    listBoards();
+
+    // call popup
+    $newBoard.click(function () {
+        // need implement save button click new board (on popup)
+    });
+
+});
