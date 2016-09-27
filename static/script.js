@@ -48,7 +48,19 @@ function LocalStorage(localStorage){
 }
 
 $(document).ready(function () {
-    var database = new StorageState(new LocalStorage(localStorage))
+    var database = new StorageState(new LocalStorage(localStorage));
+
+    // list out existing boards from storage +title
+    var listBoards = function () {
+        var board = database.getData();
+        for(var i = 0; i < board.length; i++){
+            if(board[i]['type'] === 'board') {
+                $('<div>' + board[i]['title'] + '</div>').addClass('col-md-3').appendTo($('.board'))
+            }
+        }
+    };
+    listBoards();
+
     //popup
     $(".popup").hide();
 
@@ -56,34 +68,15 @@ $(document).ready(function () {
         $(".popup").dialog();
     });
     $("#save").click(function(){
-        var $board_title = $(".title").val()
-        var new_board = new Board("board",$board_title)
-        database.saveData(new_board)
-        $(".board").append("<p class=\"text-center\">" + $board_title + "</p>")
-         $('.title').val("");
+        var $board_title = $(".title").val();
+        var new_board = new Board("board",$board_title);
+        database.saveData(new_board);
+        $('.title').val("");
         $(".popup").dialog('close');
-    });
-
-    // need to implement the functions
-    $newBoard = $('.new_board');
-
-    // list out existing boards from storage +title
-    var listBoards = function () {
-        var state = new StorageState(new LocalStorage());
-        var board = state.getDate();
-        var textBoard = "";
-        for(var i = 0; i < board.length; i++){
-            if(board[i].type === 'board') {
-                text += board[i].title + "<br>";
-            }
-        }
-        document.getElementById("boards").innerHTML = textBoard;
-
-    };
-    listBoards();
-
-    // call popup
-    $newBoard.click(function () {
-        // need implement save button click new board (on popup)
+        $('.board').empty();
+        listBoards();
     });
 });
+
+
+
