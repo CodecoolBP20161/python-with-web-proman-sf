@@ -9,8 +9,8 @@ function Board(title, id){
     this.cards = [];
 
     this.create_card = function (title) {
-        // Need to implement
-        // create new Card object and insert it to this.cards
+        var new_card = new Card(title, this.cards.length)
+        this.cards.push(new_card)
     }
 }
 
@@ -84,7 +84,7 @@ $(document).ready(function () {
         // modify attributums (no type attr)
 
         var $board_title = $(".title").val();
-        var new_board = new Board("board", $board_title, localStorage.length);
+        var new_board = new Board($board_title, localStorage.length);
         database.saveData(new_board);
         $('.title').val("");
         $(".popup").dialog('close');
