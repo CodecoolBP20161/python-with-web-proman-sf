@@ -65,9 +65,7 @@ $(document).ready(function () {
             return b['id'] - a['id'];
         });
         for(var i = 0; i < board.length; i++){
-            if(board[i]['type'] === 'board') {
-                $('<div>' + board[i]['title'] + '</div>').addClass('col-md-3 col-md-6 board_block').appendTo($('.board'));
-            }
+            $('<div>' + board[i]['title'] + '</div>').addClass('col-md-3 col-md-6 board_block').appendTo($('.board'));
         }
         $('.board').show('slow');
     };
@@ -85,7 +83,7 @@ $(document).ready(function () {
         // modify attributums (no type attr)
 
         var $board_title = $(".title").val();
-        var new_board = new Board("board", $board_title, localStorage.length);
+        var new_board = new Board($board_title, localStorage.length);
         database.saveData(new_board);
         $('.title').val("");
         $(".popup").dialog('close');
