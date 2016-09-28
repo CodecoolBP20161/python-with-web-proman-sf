@@ -128,6 +128,7 @@ $(document).ready(function () {
     //boards btn click
     $("#boards_btn").click(function(){
         listBoards()
+        location.reload();
     });
 
     //popup save button
