@@ -7,6 +7,31 @@ p {
     font-size: 33px;
 }
 
-.col-md-3.board_block{
-    height: 50px;
+.col-md-3.col-md-6.board_block{
+    height: 120px;
+    background: url('/static/img/water.jpg');
+    font-size: 15px;
+    font-style: oblique;
+    font-weight: bold;
+    color: antiquewhite;
+    border-style: solid;
+    border-color: white;
+    border-top-width: 6px;
+    border-bottom-width: 6px;
+    border-left-width: 20px;
+    border-right-width: 20px;
+    border-top-left-radius: 40px 26px;
+    border-top-right-radius: 40px 26px;
+    border-bottom-left-radius: 40px 26px;
+    border-bottom-right-radius: 40px 26px;
+    word-break: break-all;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
 }
+
+
+
+

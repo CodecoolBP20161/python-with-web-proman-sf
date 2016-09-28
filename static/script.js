@@ -1,7 +1,8 @@
 
-function Board(board, title){
+function Board(board, title, id){
     this.type = board;
     this.title = title;
+    this.id = id;
 }
 
 
@@ -49,15 +50,18 @@ function LocalStorage(localStorage){
 
 $(document).ready(function () {
     var database = new StorageState(new LocalStorage(localStorage));
-
-    // list out existing boards from storage +title
+    $('.board').hide();
+    // list out existing boards from storage
     var listBoards = function () {
-        var board = database.getData();
+        var board = database.getData().sort(function(a, b){
+            return b['id'] - a['id'];
+        });
         for(var i = 0; i < board.length; i++){
             if(board[i]['type'] === 'board') {
-                $('<div>' + board[i]['title'] + '</div>').addClass('col-md-3 board_block').appendTo($('.board'))
+                $('<div>' + board[i]['title'] + '</div>').addClass('col-md-3 col-md-6 board_block').appendTo($('.board'));
             }
         }
+        $('.board').show('slow');
     };
     listBoards();
 
@@ -65,15 +69,15 @@ $(document).ready(function () {
     $(".popup").hide();
 
     $("#btn").click(function(){
-        $(".popup").dialog();
+        $(".popup").dialog({ show: 'fade' });
     });
     $("#save").click(function(){
         var $board_title = $(".title").val();
-        var new_board = new Board("board",$board_title);
+        var new_board = new Board("board", $board_title, localStorage.length);
         database.saveData(new_board);
         $('.title').val("");
         $(".popup").dialog('close');
         $('.board').empty();
-        listBoards();
+        listBoards()
     });
 });
