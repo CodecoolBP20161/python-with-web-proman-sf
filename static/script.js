@@ -22,8 +22,8 @@ function StorageState(storage){
         this.storage = storage;
     };
 
-    this.getData = function () {
-        return this.storage.getData()
+    this.getData = function (key) {
+        return this.storage.getData(key)
     };
 
     this.saveData = function (entry) {
@@ -39,12 +39,17 @@ function StorageState(storage){
 function LocalStorage(localStorage){
     this.localStorage = localStorage;
 
-    this.getData = function () {
-        var entries = [];
-        for(var i = 0; i < this.localStorage.length; i++) {
-            entries.push(JSON.parse(this.localStorage[this.localStorage.key(i)]));
+    this.getData = function (key) {
+        if (typeof key !== 'undefined') {
+            var entries = [];
+            for(var i = 0; i < this.localStorage.length; i++) {
+                entries.push(JSON.parse(this.localStorage[this.localStorage.key(i)]));
+            }
+            return entries;
+        } else {
+            return JSON.parse(this.localStorage.getItem[key]);
         }
-        return entries;
+
     };
 
     this.saveData = function (entry) {
