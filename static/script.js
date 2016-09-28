@@ -67,6 +67,10 @@ $(document).ready(function () {
     var listBoards = function () {
         $('.card').hide();
         $('#new_card_btn').hide();
+        $('#boards_btn').hide();
+        $('#btn').show();
+        $('.board').empty();
+
 
         var board = database.getData().sort(function(a, b){
             return b['id'] - a['id'];
@@ -82,6 +86,7 @@ $(document).ready(function () {
             $('.board').hide();
             $('#btn').hide();
             $('#new_card_btn').show();
+            $('#boards_btn').show();
             listCards($(this).attr('id'))
         });
     };
@@ -102,6 +107,11 @@ $(document).ready(function () {
         $(".popup").dialog({show: 'fade'});
     });
 
+    //boards btn click
+    $("#boards_btn").click(function(){
+        listBoards()
+    });
+
     //popup save button
     $("#save").click(function(){
         var $board_title = $("#board_title").val();
@@ -109,7 +119,6 @@ $(document).ready(function () {
         database.saveData(new_board);
         $('.title').val("");
         $(".popup").dialog('close');
-        $('.board').empty();
         listBoards()
     });
 
