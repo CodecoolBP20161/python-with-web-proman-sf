@@ -30,8 +30,8 @@ function StorageState(storage){
         return this.storage.saveData(entry)
     };
 
-    this.formatData = function () {
-        return this.storage.formatData()
+    this.modifyData = function (key,attribute,value) {
+        return this.storage.modifyData(key,attribute,value)
     };
 }
 
@@ -56,8 +56,10 @@ function LocalStorage(localStorage){
         this.localStorage.setItem(String(this.localStorage.length), JSON.stringify(entry))
     };
 
-    this.formatData = function () {
-        // didn't need to format in this case!
+    this.modifyData = function (key,attribute,value) {
+        var data = JSON.parse(this.localStorage[key]);
+        data[attribute] = value
+        this.localStorage[key] = JSON.stringify(data);
     };
 }
 
@@ -82,12 +84,27 @@ $(document).ready(function () {
         }
         $('.board').show('slow');
 
+        //click on a board
         $('.col-md-3.col-md-6.board_block').click(function() {
             $('.board').hide();
             $('#btn').hide();
             $('#new_card_btn').show();
             $('#boards_btn').show();
-            listCards($(this).attr('id'))
+            var $current_board_id = $(this).attr('id')
+            listCards($current_board_id)
+        // save the newly created card to its parent board
+            $("#new_card_btn").click(function() {
+                $(".popup2").dialog({show: 'fade'});
+            });
+                $('#save_card').click(function(){
+                    var existing_cards = database.getData($current_board_id)['cards']
+                    $card_name = $('#card_title').val()
+                    var new_card_object = new Card($card_name, existing_cards.length)
+                    existing_cards.push(new_card_object)
+                    database.modifyData($current_board_id,'cards',existing_cards)
+                    $('.card_title').val("");
+                    $(".popup2").dialog('close');
+            });
         });
     };
 
@@ -121,10 +138,6 @@ $(document).ready(function () {
         $('.title').val("");
         $(".popup").dialog('close');
         listBoards()
-    });
-
-    $("#new_card_btn").click(function() {
-        $(".popup2").dialog({show: 'fade'});
     });
 
 });
