@@ -1,14 +1,22 @@
-
-function Board(board, title, id){
-    this.type = board;
+function Card(title, id) {
     this.title = title;
     this.id = id;
+}
+
+function Board(title, id){
+    this.title = title;
+    this.id = id;
+    this.cards = [];
+
+    this.create_card = function (title) {
+        // Need to implement
+        // create new Card object and insert it to this.cards
+    }
 }
 
 
 function StorageState(storage){
     this.storage = storage;
-    this.localStorage = storage.localStorage;
 
     this.changeStorage = function (storage) {
         this.storage = storage;
@@ -72,6 +80,10 @@ $(document).ready(function () {
         $(".popup").dialog({ show: 'fade' });
     });
     $("#save").click(function(){
+
+        // use the save_entry!!
+        // modify attributums (no type attr)
+
         var $board_title = $(".title").val();
         var new_board = new Board("board", $board_title, localStorage.length);
         database.saveData(new_board);
@@ -80,4 +92,19 @@ $(document).ready(function () {
         $('.board').empty();
         listBoards()
     });
+
+    var save_entry = function (type) {
+        // Need to implement
+        // if new board (same as line 82>), if new card: solve it!
+    }
+
+    $('.col-md-3.col-md-6.board_block').click(function () {
+        // need to implement (THIS.  !!!!!)
+    })
+
+    var listCards = function () {
+        //need to implement (almost same as list boards)
+    }
+
+
 });
