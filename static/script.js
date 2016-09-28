@@ -95,11 +95,11 @@ $(document).ready(function () {
     var save_entry = function (type) {
         // Need to implement
         // if new board (same as line 82>), if new card: solve it!
-    }
+    };
 
     $('.col-md-3.col-md-6.board_block').click(function () {
         // need to implement (THIS.  !!!!!)
-    }
+    });
 
 
     var listCards = function (key) {
