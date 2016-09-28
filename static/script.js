@@ -101,6 +101,7 @@ $(document).ready(function () {
 
     $('.board').hide();
     $(".popup").hide();
+    $(".popup2").hide();
     listBoards()
 
     $("#btn").click(function() {
