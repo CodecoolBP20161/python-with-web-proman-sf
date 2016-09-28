@@ -9,13 +9,13 @@ function Board(title, id){
     this.cards = [];
 
     this.create_card = function (title) {
-        // Need to implement
-        // create new Card object and insert it to this.cards
+        var new_card = new Card(title, this.cards.length)
+        this.cards.push(new_card)
     }
 }
 
 
-function StorageState(storage){
+function StorageState.(storage){
     this.storage = storage;
 
     this.changeStorage = function (storage) {
