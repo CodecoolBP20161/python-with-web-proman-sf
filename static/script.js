@@ -91,6 +91,14 @@ $(document).ready(function () {
         listBoards()
     });
 
+    //click on board
+
+    $('.col-md-3.col-md-6.board_block').click(function() {
+        $('.board').hide();
+
+    });
+
+
     var save_entry = function (type) {
         // Need to implement
         // if new board (same as line 82>), if new card: solve it!
