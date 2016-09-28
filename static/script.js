@@ -66,7 +66,8 @@ $(document).ready(function () {
             return b['id'] - a['id'];
         });
         for(var i = 0; i < board.length; i++){
-            $('<div>' + board[i]['title'] + '</div>').addClass('col-md-3 col-md-6 board_block').appendTo($('.board'));
+            $('<div>' + board[i]['title'] + '</div>').addClass('col-md-3 col-md-6 board_block')
+                .attr('id', board[i]['id']).appendTo($('.board'));
         }
         $('.board').show('slow');
     };
