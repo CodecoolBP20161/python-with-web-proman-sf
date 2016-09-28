@@ -78,30 +78,12 @@ $(document).ready(function () {
         }
         $('.board').show('slow');
 
-
-        $("#btn").click(function() {
-            $(".popup").dialog({show: 'fade'});
-
-            //popup save button
-            $("#save").click(function(){
-                var $board_title = $(".title").val();
-                var new_board = new Board($board_title, localStorage.length);
-                database.saveData(new_board);
-                $('.title').val("");
-                $(".popup").dialog('close');
-                $('.board').empty();
-                listBoards()
-            });
-        });
-
         $('.col-md-3.col-md-6.board_block').click(function() {
             $('.board').hide();
             $('#btn').hide();
             $('#new_card_btn').show();
             listCards($(this).attr('id'))
         });
-
-
     };
 
     var listCards = function (key) {
@@ -110,13 +92,29 @@ $(document).ready(function () {
             $('<div>' + cards[i]['title'] + '</div>').addClass('col-md-3 col-md-6 card_block').appendTo($('.card'));
         }
         $('.card').show('slow');
-
-        $("#new_card_btn").click(function() {
-            $(".popup").dialog({show: 'fade'});
-        });
     };
 
     $('.board').hide();
     $(".popup").hide();
-    listBoards();
+    listBoards()
+
+    $("#btn").click(function() {
+        $(".popup").dialog({show: 'fade'});
+    });
+
+    //popup save button
+    $("#save").click(function(){
+        var $board_title = $("#board_title").val();
+        var new_board = new Board($board_title, localStorage.length);
+        database.saveData(new_board);
+        $('.title').val("");
+        $(".popup").dialog('close');
+        $('.board').empty();
+        listBoards()
+    });
+
+    $("#new_card_btn").click(function() {
+        $(".popup2").dialog({show: 'fade'});
+    });
+
 });
