@@ -95,6 +95,8 @@ $(document).ready(function () {
 
     $('.col-md-3.col-md-6.board_block').click(function() {
         $('.board').hide();
+        $('#btn').hide();
+        $('<div>ADD NEW CARD</div>').addClass('btn btn-primary navbar-btn').appendTo($('#navbar_middle'));
 
     });
 
