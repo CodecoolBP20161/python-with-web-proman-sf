@@ -40,14 +40,14 @@ function LocalStorage(localStorage){
     this.localStorage = localStorage;
 
     this.getData = function (key) {
-        if (typeof key !== 'undefined') {
+        if (typeof key === 'undefined') {
             var entries = [];
             for(var i = 0; i < this.localStorage.length; i++) {
                 entries.push(JSON.parse(this.localStorage[this.localStorage.key(i)]));
             }
             return entries;
         } else {
-            return JSON.parse(this.localStorage.getItem[key]);
+            return JSON.parse(this.localStorage.getItem(key));
         }
 
     };
@@ -104,6 +104,8 @@ $(document).ready(function () {
         $('.board').hide();
         $('#btn').hide();
         $('<div>ADD NEW CARD</div>').addClass('btn btn-primary navbar-btn').appendTo($('#navbar_middle'));
+        listCards($(this).attr('id'))
+
 
     });
 
