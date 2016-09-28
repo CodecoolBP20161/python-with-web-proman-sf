@@ -59,15 +59,14 @@ function LocalStorage(localStorage){
 $(document).ready(function () {
     var database = new StorageState(new LocalStorage(localStorage));
     $('.board').hide();
+    $('.card').hide();
     // list out existing boards from storage
     var listBoards = function () {
         var board = database.getData().sort(function(a, b){
             return b['id'] - a['id'];
         });
         for(var i = 0; i < board.length; i++){
-            if(board[i]['type'] === 'board') {
-                $('<div>' + board[i]['title'] + '</div>').addClass('col-md-3 col-md-6 board_block').appendTo($('.board'));
-            }
+            $('<div>' + board[i]['title'] + '</div>').addClass('col-md-3 col-md-6 board_block').appendTo($('.board'));
         }
         $('.board').show('slow');
     };
@@ -100,10 +99,16 @@ $(document).ready(function () {
 
     $('.col-md-3.col-md-6.board_block').click(function () {
         // need to implement (THIS.  !!!!!)
-    })
+    }
 
-    var listCards = function () {
+
+    var listCards = function (key) {
         //need to implement (almost same as list boards)
+        var cards = database.getData(key)['cards'];
+        for(var i in cards){
+            $('<div>' + cards[i]['title'] + '</div>').addClass('col-md-3 col-md-6 card_block').appendTo($('.card'));
+        }
+        $('.card').show('slow');
     }
 
 
