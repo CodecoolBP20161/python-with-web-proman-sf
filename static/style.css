@@ -22,7 +22,7 @@ p {
     font-family: Helvetica, Arial, sans-serif;
 }
 
-.col-md-3.col-md-6.board_block {
+.col-xs-12.col-sm-12.col-md-12.col-lg-12.board_block {
     height: 120px;
     background: url('/static/img/board9.jpg');
     font-size: 15px;
@@ -40,15 +40,10 @@ p {
     border-top-right-radius: 40px 26px;
     border-bottom-left-radius: 40px 26px;
     border-bottom-right-radius: 40px 26px;
-    word-break: break-all;
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    text-align: center;
+
 }
 
-.col-md-3.col-md-6.card_block{
+.col-xs-12.col-sm-12.col-md-12.col-lg-12.card_block{
     height: 120px;
     background: url('/static/img/card2.jpg');
     font-family: Helvetica, Arial, sans-serif;
@@ -66,9 +61,14 @@ p {
     border-top-right-radius: 40px 26px;
     border-bottom-left-radius: 40px 26px;
     border-bottom-right-radius: 40px 26px;
-    word-break: break-all;
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    font-weight: bold;
+    color: antiquewhite;
+
+}
+
+#delete{
+    position: absolute;
+    bottom: 0px;
+    margin-bottom: 5px;
+    margin-right: 5px;
 }
