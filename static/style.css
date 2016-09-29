@@ -1,6 +1,13 @@
+
 .board {
 
     margin-top: 70px;
+}
+
+body {
+    background: url('/static/img/sf.jpg');
+    background-size: 100%, 100%;
+    background-attachment: fixed;
 }
 
 .card {
@@ -8,8 +15,17 @@
     margin-top: 70px;
 }
 
+.navbar{
+    background : #4682B4;
+}
+
+#btn{
+    background : #87CEEB;
+}
+
 p {
     font-size: 33px;
+    font-family: Helvetica, Arial, sans-serif;
 }
 
 .col-xs-12.col-sm-12.col-md-12.col-lg-12.board_block:hover + span, span:hover{
@@ -24,11 +40,13 @@ span{
 
 .col-xs-12.col-sm-12.col-md-12.col-lg-12.board_block {
     height: 120px;
-    background: url('/static/img/water.jpg');
+    background: url('/static/img/board5.jpg');
     font-size: 15px;
+    font-family: Helvetica, Arial, sans-serif;
     font-style: oblique;
     font-weight: bold;
-    color: antiquewhite;
+    color: black;
+    border-radius: 20px;
     word-break: break-all;
     padding-left: 10px;
     padding-right: 10px;
@@ -38,15 +56,18 @@ span{
     margin-bottom: 10px;
     margin-top: 10px;
     box-shadow: 10px 10px 5px grey;
+
 }
 
 .col-xs-12.col-sm-12.col-md-12.col-lg-12.card_block{
     height: 120px;
-    background: url('/static/img/water.jpg');
+    background: url('/static/img/card3.jpg');
     font-size: 15px;
+    font-family: Helvetica, Arial, sans-serif;
     font-style: oblique;
     font-weight: bold;
-    color: antiquewhite;
+    color: black;
+    border-radius: 20px;
     word-break: break-all;
     padding-left: 10px;
     padding-right: 10px;
@@ -56,10 +77,13 @@ span{
     margin-bottom: 10px;
     margin-top: 10px;
     box-shadow: 10px 10px 5px grey;
+
+
 }
 
 #delete{
     position: absolute;
+    color : black;
     bottom: 0px;
     margin-bottom: 5px;
     margin-right: 5px;
