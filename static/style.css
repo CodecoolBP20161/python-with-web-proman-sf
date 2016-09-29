@@ -1,3 +1,4 @@
+
 .board {
 
     margin-top: 70px;
@@ -8,15 +9,24 @@
     margin-top: 70px;
 }
 
+.navbar{
+    background : #4682B4;
+}
+
+#"btn"{
+    background : #87CEEB;
+}
+
 p {
     font-size: 33px;
+    font-family: Helvetica, Arial, sans-serif;
 }
 
 .col-md-3.col-md-6.board_block {
     height: 120px;
     background: url('/static/img/board9.jpg');
     font-size: 15px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Helvetica, Arial, sans-serif;
     font-style: oblique;
     font-weight: bold;
     color: black;
@@ -41,7 +51,7 @@ p {
 .col-md-3.col-md-6.card_block{
     height: 120px;
     background: url('/static/img/card2.jpg');
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Helvetica, Arial, sans-serif;
     font-size: 15px;
     font-style: oblique;
     font-weight: normal;
