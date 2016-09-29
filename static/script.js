@@ -90,25 +90,13 @@ $(document).ready(function () {
             $('#btn').hide();
             $('#new_card_btn').show();
             $('#boards_btn').show();
-            var $current_board_id = $(this).attr('id')
+            $current_board_id = $(this).attr('id')
             listCards($current_board_id)
-        // save the newly created card to its parent board
-            $("#new_card_btn").click(function() {
-                $(".popup2").dialog({show: 'fade'});
-            });
-                $('#save_card').click(function(){
-                    var existing_cards = database.getData($current_board_id)['cards']
-                    $card_name = $('#card_title').val()
-                    var new_card_object = new Card($card_name, existing_cards.length)
-                    existing_cards.push(new_card_object)
-                    database.modifyData($current_board_id,'cards',existing_cards)
-                    $('.card_title').val("");
-                    $(".popup2").dialog('close');
-            });
         });
     };
 
     var listCards = function (key) {
+        $('.card').empty();
         var cards = database.getData(key)['cards'];
         for(var i in cards){
             $('<div>' + cards[i]['title'] + '</div>').addClass('col-md-3 col-md-6 card_block').appendTo($('.card'));
@@ -127,8 +115,7 @@ $(document).ready(function () {
 
     //boards btn click
     $("#boards_btn").click(function(){
-        listBoards()
-        location.reload();
+        listBoards();
     });
 
     //popup save button
@@ -139,6 +126,23 @@ $(document).ready(function () {
         $('.title').val("");
         $(".popup").dialog('close');
         listBoards()
+    });
+
+
+    // save the newly created card to its parent board
+    $("#new_card_btn").click(function() {
+        $(".popup2").dialog({show: 'fade'});
+    });
+
+    $('#save_card').click(function(){
+        var existing_cards = database.getData($current_board_id)['cards']
+        $card_name = $('#card_title').val()
+        var new_card_object = new Card($card_name, existing_cards.length)
+        existing_cards.push(new_card_object)
+        database.modifyData($current_board_id,'cards',existing_cards)
+        $('#card_title').val("");
+        $(".popup2").dialog('close');
+        listCards($current_board_id);
     });
 
 });
