@@ -48,4 +48,11 @@ p {
     box-shadow: 10px 10px 5px grey;
 }
 
+#delete{
+    position: absolute;
+    bottom: 0px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+}
+
 

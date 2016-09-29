@@ -9,7 +9,6 @@ $(document).ready(function () {
         $('#btn').show();
         $('.board').empty();
 
-
         var board = database.getData().sort(function(a, b){
             return b['id'] - a['id'];
         });
@@ -17,6 +16,10 @@ $(document).ready(function () {
             $('<div></div>').addClass('col-md-3').attr('id', 'board' + i).appendTo($('.board'));
             $('<div>' + board[i]['title'] + '</div>').addClass('col-xs-12 col-sm-12 col-md-12 col-lg-12 board_block')
                 .attr('id', board[i]['id']).appendTo($('#board' + i));
+            $('<div></div>').addClass('col-xs-12 col-sm-12 col-md-12 col-lg-12 text-right')
+                .attr('id', 'delete').appendTo($('#' + board[i]['id']));
+            $('<span></span>').addClass('glyphicon glyphicon-remove-circle').attr('id', 'delete_' + board[i]['id'])
+                .appendTo($('#' + board[i]['id'] + '> div'));
         }
         $('.board').show('slow');
 
