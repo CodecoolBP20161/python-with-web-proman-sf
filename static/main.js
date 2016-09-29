@@ -2,6 +2,20 @@
 $(document).ready(function () {
     var database = new StorageState(new LocalStorage(localStorage));
 
+    var get_board_id = function(){
+        var data = database.getData()
+        if(data.length > 0){
+            var myArr = []
+            for (var i in data){
+                myArr.push(data[i]["id"])
+            }
+
+            return Math.max(...myArr)+1;
+        }else{
+            return 0
+        }
+    };
+
     var listBoards = function () {
         $('.card').hide();
         $('#new_card_btn').hide();
@@ -13,18 +27,26 @@ $(document).ready(function () {
             return b['id'] - a['id'];
         });
         for(var i = 0; i < board.length; i++){
-            $('<div></div>').addClass('col-md-3').attr('id', 'board' + i).appendTo($('.board'));
+            $('<div></div>').addClass('col-md-3').attr('id', 'board' + board[i]['id']).appendTo($('.board'));
             $('<div>' + board[i]['title'] + '</div>').addClass('col-xs-12 col-sm-12 col-md-12 col-lg-12 board_block')
-                .attr('id', board[i]['id']).appendTo($('#board' + i));
+                .attr('id', board[i]['id']).appendTo($('#board' + board[i]['id']));
             $('<div></div>').addClass('col-xs-12 col-sm-12 col-md-12 col-lg-12 text-right')
                 .attr('id', 'delete').appendTo($('#' + board[i]['id']));
-            $('<span></span>').addClass('glyphicon glyphicon-remove-circle').attr('id', 'delete_' + board[i]['id'])
+            $('<span></span>').addClass('glyphicon glyphicon-remove-circle').attr('id', board[i]['id'])
                 .appendTo($('#' + board[i]['id'] + '> div'));
         }
         $('.board').show('slow');
 
+        $('.glyphicon.glyphicon-remove-circle').click(function (event) {
+            event.stopPropagation();
+            $id_to_delete = $(this).attr('id');
+            $('#board' + $id_to_delete).hide();
+            database.deleteData($id_to_delete);
+        })
+
         //click on a board
-        $('.col-xs-12.col-sm-12.col-md-12.col-lg-12.board_block').click(function() {
+        $('.col-xs-12.col-sm-12.col-md-12.col-lg-12.board_block').click(function(event) {
+            // $(event.target).hasClass()
             $('.board').hide();
             $('#btn').hide();
             $('#new_card_btn').show();
@@ -61,10 +83,12 @@ $(document).ready(function () {
         listBoards();
     });
 
+
+
     //popup save button
     $("#save").click(function(){
         var $board_title = $("#board_title").val();
-        var new_board = new Board($board_title, localStorage.length);
+        var new_board = new Board($board_title, get_board_id());
         database.saveData(new_board);
         $('.title').val("");
         $(".popup").dialog('close');
@@ -77,6 +101,8 @@ $(document).ready(function () {
         $(".popup2").dialog({show: 'fade'});
     });
 
+
+
     $('#save_card').click(function(){
         var existing_cards = database.getData($current_board_id)['cards']
         $card_name = $('#card_title').val()
@@ -88,4 +114,8 @@ $(document).ready(function () {
         listCards($current_board_id);
     });
 
+    $(".delete_board").click(function(){
+        var $id = $(this).attr('id')
+
+    });
 });

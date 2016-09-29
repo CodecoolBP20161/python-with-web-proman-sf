@@ -28,6 +28,16 @@ p {
     font-family: Helvetica, Arial, sans-serif;
 }
 
+.col-xs-12.col-sm-12.col-md-12.col-lg-12.board_block:hover + span, span:hover{
+    display: block;
+}
+span{
+    display: none;
+}
+
+
+
+
 .col-xs-12.col-sm-12.col-md-12.col-lg-12.board_block {
     height: 120px;
     background: url('/static/img/board5.jpg');
