@@ -14,13 +14,14 @@ $(document).ready(function () {
             return b['id'] - a['id'];
         });
         for(var i = 0; i < board.length; i++){
-            $('<div>' + board[i]['title'] + '</div>').addClass('col-md-3 col-md-6 board_block')
-                .attr('id', board[i]['id']).appendTo($('.board'));
+            $('<div></div>').addClass('col-md-3').attr('id', 'board' + i).appendTo($('.board'));
+            $('<div>' + board[i]['title'] + '</div>').addClass('col-xs-12 col-sm-12 col-md-12 col-lg-12 board_block')
+                .attr('id', board[i]['id']).appendTo($('#board' + i));
         }
         $('.board').show('slow');
 
         //click on a board
-        $('.col-md-3.col-md-6.board_block').click(function() {
+        $('.col-xs-12.col-sm-12.col-md-12.col-lg-12.board_block').click(function() {
             $('.board').hide();
             $('#btn').hide();
             $('#new_card_btn').show();
@@ -36,7 +37,9 @@ $(document).ready(function () {
             return b['id'] - a['id'];
         });
         for(var i in cards){
-            $('<div>' + cards[i]['title'] + '</div>').addClass('col-md-3 col-md-6 card_block').appendTo($('.card'));
+            $('<div></div>').addClass('col-md-3').attr('id', 'card' + i).appendTo($('.card'));
+            $('<div>' + cards[i]['title'] + '</div>').addClass('col-xs-12 col-sm-12 col-md-12 col-lg-12 card_block')
+                .appendTo($('#card' + i));
         }
         $('.card').show('slow');
     };
