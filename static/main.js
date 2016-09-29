@@ -62,9 +62,13 @@ $(document).ready(function () {
             return b['id'] - a['id'];
         });
         for(var i in cards){
-            $('<div></div>').addClass('col-md-3').attr('id', 'card' + i).appendTo($('.card'));
+            $('<div></div>').addClass('col-md-3').attr('id', 'card' + cards[i]['id']).appendTo($('.card'));
             $('<div>' + cards[i]['title'] + '</div>').addClass('col-xs-12 col-sm-12 col-md-12 col-lg-12 card_block')
-                .appendTo($('#card' + i));
+                .attr('id', 'card_title' + cards[i]['id']).appendTo($('#card' + cards[i]['id']));
+            $('<div></div>').addClass('col-xs-12 col-sm-12 col-md-12 col-lg-12 text-right card')
+                .attr('id', 'delete_card' + cards[i]['id']).appendTo($('#card_title' + cards[i]['id']));
+            $('<span></span>').addClass('glyphicon glyphicon-remove-circle').attr('id', cards[i]['id'])
+                .appendTo($('#delete_card' + cards[i]['id']));
         }
         $('.card').show('slow');
     };
@@ -72,7 +76,7 @@ $(document).ready(function () {
     $('.board').hide();
     $(".popup").hide();
     $(".popup2").hide();
-    listBoards()
+    listBoards();
 
     $("#btn").click(function() {
         $(".popup").dialog({show: 'fade'});

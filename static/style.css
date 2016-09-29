@@ -28,15 +28,6 @@ p {
     font-family: Helvetica, Arial, sans-serif;
 }
 
-.col-xs-12.col-sm-12.col-md-12.col-lg-12.board_block:hover + span, span:hover{
-    display: block;
-}
-span{
-    display: none;
-}
-
-
-
 
 .col-xs-12.col-sm-12.col-md-12.col-lg-12.board_block {
     height: 120px;
@@ -82,6 +73,14 @@ span{
 }
 
 #delete{
+    position: absolute;
+    color : black;
+    bottom: 0px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+}
+
+.col-xs-12.col-sm-12.col-md-12.col-lg-12.text-right.card {
     position: absolute;
     color : black;
     bottom: 0px;
