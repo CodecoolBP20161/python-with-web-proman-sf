@@ -2,12 +2,11 @@
 $(document).ready(function () {
     var database = new StorageState(new LocalStorage(localStorage));
 
-    var get_board_id = function(){
-        var data = database.getData()
-        if(data.length > 0){
+    var get_board_id = function(array){
+        if(array.length > 0){
             var myArr = []
-            for (var i in data){
-                myArr.push(data[i]["id"])
+            for (var i in array){
+                myArr.push(array[i]["id"])
             }
 
             return Math.max(...myArr)+1;
@@ -37,6 +36,7 @@ $(document).ready(function () {
         }
         $('.board').show('slow');
 
+        //delete board
         $('.glyphicon.glyphicon-remove-circle').click(function (event) {
             event.stopPropagation();
             $id_to_delete = $(this).attr('id');
@@ -71,14 +71,25 @@ $(document).ready(function () {
                 .appendTo($('#delete_card' + cards[i]['id']));
         }
         $('.card').show('slow');
-
-        $('.glyphicon.glyphicon-remove-circle.card').click()
+        $('.glyphicon.glyphicon-remove-circle.card_del').click(function(event){
+            event.stopPropagation();
+            $to_delete = $(this).attr('id')
+            $("#card" + $to_delete).hide()
+            for(var i in cards){
+                if (cards[i]['id'] === Number($to_delete)){
+                    cards.splice(i)
+                }
+            }
+            database.modifyData(key,'cards',cards);
+        });
     };
+
 
     $('.board').hide();
     $(".popup").hide();
     $(".popup2").hide();
     listBoards();
+
 
     $("#btn").click(function() {
         $(".popup").dialog({show: 'fade'});
@@ -94,7 +105,7 @@ $(document).ready(function () {
     //popup save button
     $("#save").click(function(){
         var $board_title = $("#board_title").val();
-        var new_board = new Board($board_title, get_board_id());
+        var new_board = new Board($board_title, get_board_id(database.getData()));
         database.saveData(new_board);
         $('.title').val("");
         $(".popup").dialog('close');
@@ -112,7 +123,7 @@ $(document).ready(function () {
     $('#save_card').click(function(){
         var existing_cards = database.getData($current_board_id)['cards']
         $card_name = $('#card_title').val()
-        var new_card_object = new Card($card_name, existing_cards.length)
+        var new_card_object = new Card($card_name, get_board_id(existing_cards))
         existing_cards.push(new_card_object)
         database.modifyData($current_board_id,'cards',existing_cards)
         $('#card_title').val("");
