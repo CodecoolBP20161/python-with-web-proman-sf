@@ -33,6 +33,10 @@ function StorageState(storage){
     this.modifyData = function (key,attribute,value) {
         return this.storage.modifyData(key,attribute,value)
     };
+
+    this.deleteData = function (key) {
+        return this.storage.deleteData(key);
+    }
 }
 
 
@@ -62,8 +66,7 @@ function LocalStorage(localStorage){
         this.localStorage[key] = JSON.stringify(data);
     };
 
-    // this.deleteData = function (key) {
-    //     var data = JSON.parse(this.localStorage[key]);
-    //     data[attribute] = value
-    //     this.localStorage[key] = JSON.stringify(data);
-}
+    this.deleteData = function (key) {
+        this.localStorage.removeItem(key);
+    };
+};

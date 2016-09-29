@@ -12,6 +12,16 @@ p {
     font-size: 33px;
 }
 
+.col-xs-12.col-sm-12.col-md-12.col-lg-12.board_block:hover + span, span:hover{
+    display: block;
+}
+span{
+    display: none;
+}
+
+
+
+
 .col-xs-12.col-sm-12.col-md-12.col-lg-12.board_block {
     height: 120px;
     background: url('/static/img/water.jpg');
@@ -54,5 +64,3 @@ p {
     margin-bottom: 5px;
     margin-right: 5px;
 }
-
-
