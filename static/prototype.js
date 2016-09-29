@@ -53,7 +53,7 @@ function LocalStorage(localStorage){
     };
 
     this.saveData = function (entry) {
-        this.localStorage.setItem(String(this.localStorage.length), JSON.stringify(entry))
+        this.localStorage.setItem(String(entry.id), JSON.stringify(entry))
     };
 
     this.modifyData = function (key,attribute,value) {
@@ -61,4 +61,9 @@ function LocalStorage(localStorage){
         data[attribute] = value
         this.localStorage[key] = JSON.stringify(data);
     };
+
+    // this.deleteData = function (key) {
+    //     var data = JSON.parse(this.localStorage[key]);
+    //     data[attribute] = value
+    //     this.localStorage[key] = JSON.stringify(data);
 }
