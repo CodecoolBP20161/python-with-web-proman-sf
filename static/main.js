@@ -65,12 +65,14 @@ $(document).ready(function () {
             $('<div></div>').addClass('col-md-3').attr('id', 'card' + cards[i]['id']).appendTo($('.card'));
             $('<div>' + cards[i]['title'] + '</div>').addClass('col-xs-12 col-sm-12 col-md-12 col-lg-12 card_block')
                 .attr('id', 'card_title' + cards[i]['id']).appendTo($('#card' + cards[i]['id']));
-            $('<div></div>').addClass('col-xs-12 col-sm-12 col-md-12 col-lg-12 text-right card')
+            $('<div></div>').addClass('col-xs-12 col-sm-12 col-md-12 col-lg-12 text-right card_span')
                 .attr('id', 'delete_card' + cards[i]['id']).appendTo($('#card_title' + cards[i]['id']));
-            $('<span></span>').addClass('glyphicon glyphicon-remove-circle card').attr('id', cards[i]['id'])
+            $('<span></span>').addClass('glyphicon glyphicon-remove-circle card_del').attr('id', cards[i]['id'])
                 .appendTo($('#delete_card' + cards[i]['id']));
         }
         $('.card').show('slow');
+
+        $('.glyphicon.glyphicon-remove-circle.card').click()
     };
 
     $('.board').hide();

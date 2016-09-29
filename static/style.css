@@ -80,7 +80,7 @@ p {
     margin-right: 5px;
 }
 
-.col-xs-12.col-sm-12.col-md-12.col-lg-12.text-right.card {
+.col-xs-12.col-sm-12.col-md-12.col-lg-12.text-right.card_span {
     position: absolute;
     color : black;
     bottom: 0px;
