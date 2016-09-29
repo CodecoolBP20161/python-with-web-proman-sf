@@ -17,7 +17,7 @@
     background : #4682B4;
 }
 
-#"btn"{
+#btn{
     background : #87CEEB;
 }
 
@@ -35,18 +35,37 @@ p {
     font-weight: bold;
     color: black;
     border-radius: 20px;
+    word-break: break-all;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    box-shadow: 10px 10px 5px grey;
 
 }
 
 .col-xs-12.col-sm-12.col-md-12.col-lg-12.card_block{
     height: 120px;
-    background: url('/static/img/card2.jpg');
-    font-family: Helvetica, Arial, sans-serif;
+    background: url('/static/img/board9.jpg');
     font-size: 15px;
+    font-family: Helvetica, Arial, sans-serif;
     font-style: oblique;
-    font-weight: normal;
+    font-weight: bold;
     color: black;
     border-radius: 20px;
+    word-break: break-all;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    box-shadow: 10px 10px 5px grey;
+
 
 }
 
