@@ -4,8 +4,9 @@
     margin-top: 70px;
 }
 
-.background{
-    background :url('/static/img/sf.jpg');
+body {
+    background: url('/static/img/sf.jpg');
+    background-size: 100%, 100%;
 }
 
 .card {
