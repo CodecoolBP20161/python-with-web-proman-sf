@@ -4,7 +4,7 @@ function Card(title, id) {
 }
 
 function Board(title, id){
-    this.title = title;
+    this.title = title.toUpperCase();
     this.id = id;
     this.cards = [];
 

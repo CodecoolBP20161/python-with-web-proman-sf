@@ -14,11 +14,12 @@ p {
 
 .col-md-3.col-md-6.board_block {
     height: 120px;
-    background: url('/static/img/water.jpg');
+    background: url('/static/img/board9.jpg');
     font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
     font-style: oblique;
     font-weight: bold;
-    color: antiquewhite;
+    color: black;
     border-style: solid;
     border-color: white;
     border-top-width: 6px;
@@ -34,15 +35,17 @@ p {
     padding-right: 10px;
     padding-top: 10px;
     padding-bottom: 10px;
+    text-align: center;
 }
 
 .col-md-3.col-md-6.card_block{
     height: 120px;
-    background: url('/static/img/water.jpg');
+    background: url('/static/img/card2.jpg');
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 15px;
     font-style: oblique;
-    font-weight: bold;
-    color: antiquewhite;
+    font-weight: normal;
+    color: black;
     border-style: solid;
     border-color: white;
     border-top-width: 6px;
@@ -59,5 +62,3 @@ p {
     padding-top: 10px;
     padding-bottom: 10px;
 }
-
-
