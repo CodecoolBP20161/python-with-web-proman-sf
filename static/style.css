@@ -7,6 +7,7 @@
 body {
     background: url('/static/img/sf.jpg');
     background-size: 100%, 100%;
+    background-attachment: fixed;
 }
 
 .card {
@@ -29,7 +30,7 @@ p {
 
 .col-xs-12.col-sm-12.col-md-12.col-lg-12.board_block {
     height: 120px;
-    background: url('/static/img/board9.jpg');
+    background: url('/static/img/board5.jpg');
     font-size: 15px;
     font-family: Helvetica, Arial, sans-serif;
     font-style: oblique;
@@ -50,7 +51,7 @@ p {
 
 .col-xs-12.col-sm-12.col-md-12.col-lg-12.card_block{
     height: 120px;
-    background: url('/static/img/board9.jpg');
+    background: url('/static/img/card3.jpg');
     font-size: 15px;
     font-family: Helvetica, Arial, sans-serif;
     font-style: oblique;
