@@ -37,6 +37,7 @@ $(document).ready(function () {
         }
         $('.board').show('slow');
 
+        //delete board
         $('.glyphicon.glyphicon-remove-circle').click(function (event) {
             event.stopPropagation();
             $id_to_delete = $(this).attr('id');
@@ -71,12 +72,22 @@ $(document).ready(function () {
                 .appendTo($('#delete_card' + cards[i]['id']));
         }
         $('.card').show('slow');
+
+        $('glyphicon.glyphicon-remove-circle.card').click(function(){
+            $to_delete = $(this).id
+            findAndRemove(cards, 'id', $to_delete)
+            database.modifyData(key,'cards',cards);
+        });
+
+
     };
+
 
     $('.board').hide();
     $(".popup").hide();
     $(".popup2").hide();
     listBoards();
+
 
     $("#btn").click(function() {
         $(".popup").dialog({show: 'fade'});
