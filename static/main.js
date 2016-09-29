@@ -67,7 +67,7 @@ $(document).ready(function () {
                 .attr('id', 'card_title' + cards[i]['id']).appendTo($('#card' + cards[i]['id']));
             $('<div></div>').addClass('col-xs-12 col-sm-12 col-md-12 col-lg-12 text-right card')
                 .attr('id', 'delete_card' + cards[i]['id']).appendTo($('#card_title' + cards[i]['id']));
-            $('<span></span>').addClass('glyphicon glyphicon-remove-circle').attr('id', cards[i]['id'])
+            $('<span></span>').addClass('glyphicon glyphicon-remove-circle card').attr('id', cards[i]['id'])
                 .appendTo($('#delete_card' + cards[i]['id']));
         }
         $('.card').show('slow');
