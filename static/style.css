@@ -4,6 +4,10 @@
     margin-top: 70px;
 }
 
+.background{
+    background :url('/static/img/sf.jpg');
+}
+
 .card {
 
     margin-top: 70px;
@@ -30,16 +34,7 @@ p {
     font-style: oblique;
     font-weight: bold;
     color: black;
-    border-style: solid;
-    border-color: white;
-    border-top-width: 6px;
-    border-bottom-width: 6px;
-    border-left-width: 20px;
-    border-right-width: 20px;
-    border-top-left-radius: 40px 26px;
-    border-top-right-radius: 40px 26px;
-    border-bottom-left-radius: 40px 26px;
-    border-bottom-right-radius: 40px 26px;
+    border-radius: 20px;
 
 }
 
@@ -51,23 +46,13 @@ p {
     font-style: oblique;
     font-weight: normal;
     color: black;
-    border-style: solid;
-    border-color: white;
-    border-top-width: 6px;
-    border-bottom-width: 6px;
-    border-left-width: 20px;
-    border-right-width: 20px;
-    border-top-left-radius: 40px 26px;
-    border-top-right-radius: 40px 26px;
-    border-bottom-left-radius: 40px 26px;
-    border-bottom-right-radius: 40px 26px;
-    font-weight: bold;
-    color: antiquewhite;
+    border-radius: 20px;
 
 }
 
 #delete{
     position: absolute;
+    color : black;
     bottom: 0px;
     margin-bottom: 5px;
     margin-right: 5px;
