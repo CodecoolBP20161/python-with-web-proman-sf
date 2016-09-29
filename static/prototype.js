@@ -1,11 +1,3 @@
-function findAndRemove(array, property, value) {
-  array.forEach(function(result, index) {
-    if(result[property] === value) {
-      //Remove from array
-      array.splice(index, 1);
-    }
-  });
-}
 
 function Card(title, id) {
     this.title = title;
