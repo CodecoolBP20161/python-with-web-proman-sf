@@ -13,7 +13,6 @@ $(document).ready(function () {
         var board = database.getData().sort(function(a, b){
             return b['id'] - a['id'];
         });
-
         for(var i = 0; i < board.length; i++){
             $('<div>' + board[i]['title'] + '</div>').addClass('col-md-3 col-md-6 board_block')
                 .attr('id', board[i]['id']).appendTo($('.board'));
@@ -33,7 +32,9 @@ $(document).ready(function () {
 
     var listCards = function (key) {
         $('.card').empty();
-        var cards = database.getData(key)['cards'];
+        var cards = database.getData(key)['cards'].sort(function(a, b){
+            return b['id'] - a['id'];
+        });
         for(var i in cards){
             $('<div>' + cards[i]['title'] + '</div>').addClass('col-md-3 col-md-6 card_block').appendTo($('.card'));
         }
