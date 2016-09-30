@@ -77,7 +77,7 @@ $(document).ready(function () {
             $("#card" + $to_delete).hide()
             for(var i in cards){
                 if (cards[i]['id'] === Number($to_delete)){
-                    cards.splice(i, i);
+                    cards.splice(i, 1);
                 }
             }
             database.modifyData(key,'cards',cards);
