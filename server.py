@@ -1,7 +1,19 @@
 from flask import Flask, render_template, jsonify
 from table_handler import BoardHandler, CardHandler
+from connect_db import db
+
 
 app = Flask('ProMan')
+
+
+@app.before_request
+def before_request():
+    db.connect()
+
+
+@app.after_request
+def after_request():
+    db.close()
 
 
 @app.route('/', methods=['GET'])
@@ -33,6 +45,10 @@ def get_boards():
     boards = board_handler.get_all_data()
     boards_in_dict = [{'id': str(i.id), 'title': i.title} for i in boards]
     return jsonify(boards_in_dict)
+
+
+def connection_to_db(db):
+    return db
 
 
 if __name__ == '__main__':
