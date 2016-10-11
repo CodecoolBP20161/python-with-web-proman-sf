@@ -32,7 +32,7 @@ class BoardHandler(TableHandler):
         self.table.create(**input_dict)
 
     def delete_data(self, data_id):
-        self.table.delete_instance().where(self.table.id == data_id)
+        self.table.delete().where(self.table.id == data_id).execute()
 
     def get_data_by_filter(self):
         pass
@@ -52,7 +52,7 @@ class CardHandler(TableHandler):
         self.table.create(**local_dict)
 
     def delete_data(self, data_id):
-        self.table.delete_instance().where(self.table.id == data_id)
+        self.table.delete().where(self.table.id == data_id).execute()
 
     def get_data_by_filter(self, attribute, value):
-        return [i for i in self.table.select().where(self.table.attribute == value)]
+        return [i for i in self.table.select().where(getattr(self.table, attribute) == value)]
