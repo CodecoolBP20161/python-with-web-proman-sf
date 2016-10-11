@@ -12,8 +12,8 @@ class TableHandler:
     def delete_data(self):
         raise NotImplementedError
 
-    def get_data_by_filter(self):
-        raise NotImplementedError
+    def get_data_by_filter(self, attribute, value):
+        return [i for i in self.table.select().where(getattr(self.table, attribute) == value)]
 
     def modify_data(self, data_id, attribute, value):
         object_to_modify = self.table.select().where(self.table.id == data_id)
@@ -34,9 +34,6 @@ class BoardHandler(TableHandler):
     def delete_data(self, data_id):
         self.table.delete().where(self.table.id == data_id).execute()
 
-    def get_data_by_filter(self):
-        pass
-
 
 class CardHandler(TableHandler):
     def __init__(self):
@@ -53,6 +50,3 @@ class CardHandler(TableHandler):
 
     def delete_data(self, data_id):
         self.table.delete().where(self.table.id == data_id).execute()
-
-    def get_data_by_filter(self, attribute, value):
-        return [i for i in self.table.select().where(getattr(self.table, attribute) == value)]
