@@ -73,9 +73,9 @@ function LocalStorage(localStorage) {
 
 function apiHandler() {
 
-    this.getData = function (data_id) {
+    this.getData = function (dataID) {
         var response = '';
-        if (typeof data_id === 'undefined') {
+        if (typeof dataID === 'undefined') {
             $.ajax({
                 url: "/api/boards",
                 type: "GET",
@@ -87,30 +87,54 @@ function apiHandler() {
             });
         } else {
             $.ajax({
-                url: "/api/boards/" + data_id,
+                url: "/api/boards/" + dataID,
                 type: "GET",
                 async: false,
                 dataType: 'json',
-                success: function (board_with_cards) {
-                    response = board_with_cards;
+                success: function (boardWithCards) {
+                    response = boardWithCards;
                 }
             });
         }
         return response
     };
 
-    this.saveData = function () {
-
+    this.saveData = function (dataObj) {
+        if(dataObj['table'] === 'board') {
+            $.ajax({
+                url: "/api/boards/" + dataObj['title'],
+                type: "POST",
+                async: false,
+                dataType: 'json',
+                success: function (boards) {
+                    return boards
+                }
+            })
+        } else if (dataObj['table'] === 'card') {
+            var objForRoute = {
+                'title': dataObj['title'],
+                'board': dataObj['board']
+            };
+            $.ajax({
+                url: "/api/card/" + objForRoute,
+                type: "POST",
+                async: false,
+                dataType: 'json',
+                success: function (boardWithCards) {
+                    return boardWithCards
+                }
+            })
+        }
     };
 
     this.modifyData = function () {
 
     };
 
-    this.deleteData = function (data_dict) {
-        if(data_dict['table'] === 'board') {
+    this.deleteData = function (dataObj) {
+        if(dataObj['table'] === 'board') {
             $.ajax({
-                url: "/api/boards/" + data_dict['id'],
+                url: "/api/boards/" + dataObj['id'],
                 type: "DELETE",
                 async: false,
                 dataType: 'json',
@@ -118,14 +142,14 @@ function apiHandler() {
                     return boards
                 }
             })
-        } else if (data_dict['table'] === 'card') {
+        } else if (dataObj['table'] === 'card') {
             $.ajax({
-                url: "/api/card/" + data_dict['id'],
+                url: "/api/card/" + dataObj['id'],
                 type: "DELETE",
                 async: false,
                 dataType: 'json',
-                success: function (board_with_cards) {
-                    return board_with_cards
+                success: function (boardWithCards) {
+                    return boardWithCards
                 }
             })
         }
