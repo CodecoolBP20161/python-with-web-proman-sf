@@ -101,7 +101,7 @@ function apiHandler() {
     this.saveData = function (dataObj) {
         if(dataObj['table'] === 'board') {
             $.ajax({
-                url: "/api/boards/{'title': " + dataObj['title'] + "}",
+                url: "/api/boards/{'title': " + "\"" + dataObj['title']+"\"" + "}",
                 type: "POST",
                 async: false,
                 dataType: 'json',
@@ -111,7 +111,7 @@ function apiHandler() {
             })
         } else if (dataObj['table'] === 'card') {
             $.ajax({
-                url: "/api/cards/{'title': " + dataObj['title'] + ", 'board': " + dataObj['board'] + "}",
+                url: "/api/cards/{'title': " +"\"" + dataObj['title'] +"\"" + ", 'board': " + "\""+ dataObj['board'] +"\""+ "}",
                 type: "POST",
                 async: false,
                 dataType: 'json',
