@@ -8,8 +8,9 @@ class BaseModel(Model):
 
 
 class Board(BaseModel):
-    pass
+    title = CharFiled()
 
 
 class Card(BaseModel):
-    pass
+    title = Charfield()
+    board = ForeignKeyField(Board, related_name='boards')
