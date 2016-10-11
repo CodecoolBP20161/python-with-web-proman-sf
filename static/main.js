@@ -1,6 +1,6 @@
 
 $(document).ready(function () {
-    var database = new StorageState(new LocalStorage(localStorage));
+    var database = new StorageState(new apiHandler());
 
     var get_board_id = function(array){
         if(array.length > 0){
