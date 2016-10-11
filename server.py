@@ -19,11 +19,9 @@ def get_cards(data_id):
     card_handler = CardHandler()
     cards = card_handler.get_data_by_filter('board', data_id)
     cards_in_dict = [{'id': str(i.id), 'title': i.title} for i in cards]
-
     board_handler = BoardHandler()
     board = board_handler.get_data_by_filter('id', data_id)
     response = [{'id': str(i.id), 'title:': i.title, 'cards': cards_in_dict} for i in board]
-
     return jsonify(*response)
 
 
@@ -33,6 +31,22 @@ def get_boards():
     boards = board_handler.get_all_data()
     boards_in_dict = [{'id': str(i.id), 'title': i.title} for i in boards]
     return jsonify(boards_in_dict)
+
+
+@app.route('/api/boards/<id_to_delete>', methods=['DELETE'])
+def delete_board():
+    board_handler = BoardHandler()
+    board_handler.delete_data(id_to_delete)
+    return redirect(url_for('get_boards'))
+
+
+@app.route('/api/card/<id_to_delete>', methods=['DELETE'])
+def delete_card():
+    card_handler = CardHandler()
+    card_handler.delete_data(id_to_delete)
+    return redirect(url_for('get_cards'))
+
+
 
 
 if __name__ == '__main__':
