@@ -4,6 +4,8 @@ from table_handler import BoardHandler, CardHandler
 
 app = Flask('ProMan')
 
+board_handler = BoardHandler()
+card_handler = CardHandler()
 
 @app.before_request
 def before_request():
@@ -28,27 +30,34 @@ def modify_data(table, id):
 
 @app.route('/api/boards/<data_id>', methods=['GET'])
 def get_cards(data_id):
-    card_handler = CardHandler()
     cards = card_handler.get_data_by_filter('board', data_id)
     cards_in_dict = [{'id': str(i.id), 'title': i.title} for i in cards]
-
-    board_handler = BoardHandler()
     board = board_handler.get_data_by_filter('id', data_id)
     response = [{'id': str(i.id), 'title:': i.title, 'cards': cards_in_dict} for i in board]
-
     return jsonify(*response)
 
 
 @app.route('/api/boards/', methods=['GET'])
 def get_boards():
-    board_handler = BoardHandler()
     boards = board_handler.get_all_data()
     boards_in_dict = [{'id': str(i.id), 'title': i.title} for i in boards]
     return jsonify(boards_in_dict)
 
 
-def connection_to_db(db):
-    return db
+@app.route('/api/boards/<id_to_delete>', methods=['DELETE'])
+def delete_board(id_to_delete):
+    all_cards = card_handler.get_data_by_filter('board', id_to_delete)
+    for card in all_cards:
+        card_handler.delete_data(card.id)
+    board_handler.delete_data(id_to_delete)
+    return redirect(url_for('get_boards'))
+
+
+@app.route('/api/card/<id_to_delete>', methods=['DELETE'])
+def delete_card(id_to_delete):
+    card_handler.delete_data(id_to_delete)
+    return redirect(url_for('get_cards'))
+
 
 
 if __name__ == '__main__':
