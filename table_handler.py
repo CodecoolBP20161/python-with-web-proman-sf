@@ -43,3 +43,6 @@ class CardHandler(TableHandler):
 
     def delete_data(self, id):
         self.table.delete().where(self.table.id == id)
+
+    def get_data_by_filter(self, attribute, value):
+        return [i for i in self.table.select().where(self.table.attribute == value)]
