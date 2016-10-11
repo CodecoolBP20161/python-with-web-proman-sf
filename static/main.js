@@ -1,6 +1,6 @@
 
 $(document).ready(function () {
-    var database = new StorageState(new LocalStorage(localStorage));
+    var database = new StorageState(new apiHandler());
 
     var get_board_id = function(array){
         if(array.length > 0){
@@ -41,8 +41,8 @@ $(document).ready(function () {
             event.stopPropagation();
             $id_to_delete = $(this).attr('id');
             $('#board' + $id_to_delete).hide();
-            database.deleteData($id_to_delete);
-        })
+            database.deleteData({'id': $id_to_delete, 'table': 'board'});
+        });
 
         //click on a board
         $('.col-xs-12.col-sm-12.col-md-12.col-lg-12.board_block').click(function(event) {
@@ -73,14 +73,9 @@ $(document).ready(function () {
         $('.card').show('slow');
         $('.glyphicon.glyphicon-remove-circle.card_del').click(function(event){
             event.stopPropagation();
-            $to_delete = $(this).attr('id')
-            $("#card" + $to_delete).hide()
-            for(var i in cards){
-                if (cards[i]['id'] === Number($to_delete)){
-                    cards.splice(i, 1);
-                }
-            }
-            database.modifyData(key,'cards',cards);
+            $to_delete = $(this).attr('id');
+            $("#card" + $to_delete).hide();
+            database.deleteData({'id': $to_delete, 'table': 'card'});
         });
     };
 
@@ -101,7 +96,6 @@ $(document).ready(function () {
     });
 
 
-
     //popup save button
     $("#save").click(function(){
         var $board_title = $("#board_title").val();
@@ -118,8 +112,7 @@ $(document).ready(function () {
         $(".popup2").dialog({show: 'fade'});
     });
 
-
-
+    
     $('#save_card').click(function(){
         var existing_cards = database.getData($current_board_id)['cards']
         $card_name = $('#card_title').val()
@@ -131,8 +124,4 @@ $(document).ready(function () {
         listCards($current_board_id);
     });
 
-    $(".delete_board").click(function(){
-        var $id = $(this).attr('id')
-
-    });
 });

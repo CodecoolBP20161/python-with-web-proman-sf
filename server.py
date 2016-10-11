@@ -1,4 +1,4 @@
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template, jsonify, redirect, url_for
 from connect_db import db
 from table_handler import BoardHandler, CardHandler
 
@@ -57,7 +57,6 @@ def delete_board(id_to_delete):
 def delete_card(id_to_delete):
     card_handler.delete_data(id_to_delete)
     return redirect(url_for('get_cards'))
-
 
 
 if __name__ == '__main__':
