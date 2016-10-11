@@ -93,7 +93,6 @@ function apiHandler() {
                 dataType: 'json',
                 success: function (board_with_cards) {
                     response = board_with_cards;
-                    console.log(board_with_cards)
                 }
             });
         }
@@ -108,7 +107,16 @@ function apiHandler() {
 
     };
 
-    this.deleteData = function () {
+    this.deleteData = function (data_id) {
+        $.ajax({
+            url: "/api/boards/" + data_id,
+                type: "DELETE",
+                async: false,
+                dataType: 'json',
+                success: function (boards) {
+                    return boards
+                }
+        })
 
     };
 }
