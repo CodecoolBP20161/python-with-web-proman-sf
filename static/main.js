@@ -117,11 +117,12 @@ $(document).ready(function () {
 
     // save card
     $('#save_card').click(function(){
-        var existing_cards = database.getData($current_board_id)['cards']
-        $card_name = $('#card_title').val()
-        var new_card_object = new Card($card_name, get_board_id(existing_cards))
-        existing_cards.push(new_card_object)
-        database.modifyData($current_board_id,'cards',existing_cards)
+        $cardName = $('#card_title').val();
+        console.log($current_board_id)
+        var newCardObject = new Card($cardName, $current_board_id);
+        newCardObject.table = 'card';
+        console.log(newCardObject.board)
+        database.saveData(newCardObject);
         $('#card_title').val("");
         $(".popup2").dialog('close');
         listCards($current_board_id);

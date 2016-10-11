@@ -1,10 +1,11 @@
-function Card(title) {
+function Card(title, boardID) {
     this.title = title;
+    this.board = boardID;
+
 }
 
-function Board(title, boardID) {
+function Board(title) {
     this.title = title;
-    this.board = boardID
 
     this.create_card = function (title) {
         var new_card_btn = new Card(title, this.cards.length);
@@ -109,12 +110,8 @@ function apiHandler() {
                 }
             })
         } else if (dataObj['table'] === 'card') {
-            var objForRoute = {
-                "'title'": dataObj['title'],
-                "'board'": dataObj['board']
-            };
             $.ajax({
-                url: "/api/card/" + objForRoute,
+                url: "/api/cards/{'title': " + dataObj['title'] + ", 'board': " + dataObj['board'] + "}",
                 type: "POST",
                 async: false,
                 dataType: 'json',
@@ -142,7 +139,7 @@ function apiHandler() {
             })
         } else if (dataObj['table'] === 'card') {
             $.ajax({
-                url: "/api/card/" + dataObj['id'],
+                url: "/api/cards/" + dataObj['id'],
                 type: "DELETE",
                 async: false,
                 dataType: 'json',
