@@ -107,16 +107,27 @@ function apiHandler() {
 
     };
 
-    this.deleteData = function (data_id) {
-        $.ajax({
-            url: "/api/boards/" + data_id,
+    this.deleteData = function (data_dict) {
+        if(data_dict['table'] === 'board') {
+            $.ajax({
+                url: "/api/boards/" + data_dict['id'],
                 type: "DELETE",
                 async: false,
                 dataType: 'json',
                 success: function (boards) {
                     return boards
                 }
-        })
-
+            })
+        } else if (data_dict['table'] === 'card') {
+            $.ajax({
+                url: "/api/card/" + data_dict['id'],
+                type: "DELETE",
+                async: false,
+                dataType: 'json',
+                success: function (board_with_cards) {
+                    return board_with_cards
+                }
+            })
+        }
     };
 }
