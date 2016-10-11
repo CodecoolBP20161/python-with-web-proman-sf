@@ -71,7 +71,7 @@ $(document).ready(function () {
                 .appendTo($('#delete_card' + cards[i]['id']));
         }
         $('.card').show('slow');
-        
+
         // delete card
         $('.glyphicon.glyphicon-remove-circle.card_del').click(function(event){
             event.stopPropagation();
@@ -118,10 +118,8 @@ $(document).ready(function () {
     // save card
     $('#save_card').click(function(){
         $cardName = $('#card_title').val();
-        console.log($current_board_id)
         var newCardObject = new Card($cardName, $current_board_id);
         newCardObject.table = 'card';
-        console.log(newCardObject.board)
         database.saveData(newCardObject);
         $('#card_title').val("");
         $(".popup2").dialog('close');
