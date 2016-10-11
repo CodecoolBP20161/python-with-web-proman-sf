@@ -1,10 +1,9 @@
-
 function Card(title, id) {
     this.title = title;
     this.id = id;
 }
 
-function Board(title, id){
+function Board(title, id) {
     this.title = title;
     this.id = id;
     this.cards = [];
@@ -16,7 +15,7 @@ function Board(title, id){
 }
 
 
-function StorageState(storage){
+function StorageState(storage) {
     this.storage = storage;
 
     this.changeStorage = function (storage) {
@@ -31,8 +30,8 @@ function StorageState(storage){
         return this.storage.saveData(entry)
     };
 
-    this.modifyData = function (key,attribute,value) {
-        return this.storage.modifyData(key,attribute,value)
+    this.modifyData = function (key, attribute, value) {
+        return this.storage.modifyData(key, attribute, value)
     };
 
     this.deleteData = function (key) {
@@ -41,13 +40,13 @@ function StorageState(storage){
 }
 
 
-function LocalStorage(localStorage){
+function LocalStorage(localStorage) {
     this.localStorage = localStorage;
 
     this.getData = function (key) {
         if (typeof key === 'undefined') {
             var entries = [];
-            for(var i = 0; i < this.localStorage.length; i++) {
+            for (var i = 0; i < this.localStorage.length; i++) {
                 entries.push(JSON.parse(this.localStorage[this.localStorage.key(i)]));
             }
             return entries;
@@ -61,7 +60,7 @@ function LocalStorage(localStorage){
         this.localStorage.setItem(String(entry.id), JSON.stringify(entry))
     };
 
-    this.modifyData = function (key,attribute,value) {
+    this.modifyData = function (key, attribute, value) {
         var data = JSON.parse(this.localStorage[key]);
         data[attribute] = value;
         this.localStorage[key] = JSON.stringify(data);
@@ -74,19 +73,32 @@ function LocalStorage(localStorage){
 
 function apiHandler() {
 
-    this.getData = function () {
-        
-    };
-    
+    this.getData = function (data_id) {
+        var response = '';
+        if (typeof data_id === 'undefined') {
+            $.ajax({
+                url: "/api/boards",
+                type: "GET",
+                async: false,
+                dataType: 'json',
+                success: function (boards) {
+                    response = boards;
+                    console.log(boards)
+                }
+            });
+            return response
+        }
+    }
+
     this.saveData = function () {
-        
+
     };
-    
+
     this.modifyData = function () {
-        
+
     };
-    
+
     this.deleteData = function () {
-        
+
     };
 }
