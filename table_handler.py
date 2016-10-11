@@ -1,22 +1,27 @@
 from models import Card, Board
 
-# te
-# mplate class
-class TableHandler():
+
+# template class
+class TableHandler:
+    def __init__(self, table):
+        self.table = table
+
     def save_data(self):
-        pass
+        raise NotImplementedError
 
     def delete_data(self):
-        pass
+        raise NotImplementedError
 
     def get_data_by_filter(self):
-        pass
+        raise NotImplementedError
 
-    def modify_data(self):
-        pass
+    def modify_data(self, data_id, attribute, value):
+        object_to_modify = self.table.select().where(self.table.id == data_id)
+        object_to_modify.attribute = value
+        object_to_modify.save()
 
     def get_all_data(self):
-        pass
+        return [i for i in self.table.select()]
 
 
 class BoardHandler(TableHandler):
@@ -25,7 +30,7 @@ class BoardHandler(TableHandler):
 
 class CardHandler(TableHandler):
     def __init__(self):
-        self.table = Card
+        super().__init__(Card)
 
     def save_data(self, input_dict):
         local_dict = {}
