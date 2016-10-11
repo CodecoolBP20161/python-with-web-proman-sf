@@ -83,12 +83,22 @@ function apiHandler() {
                 dataType: 'json',
                 success: function (boards) {
                     response = boards;
-                    console.log(boards)
                 }
             });
-            return response
+        } else {
+            $.ajax({
+                url: "/api/boards/" + data_id,
+                type: "GET",
+                async: false,
+                dataType: 'json',
+                success: function (board_with_cards) {
+                    response = board_with_cards;
+                    console.log(board_with_cards)
+                }
+            });
         }
-    }
+        return response
+    };
 
     this.saveData = function () {
 
