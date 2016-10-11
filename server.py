@@ -59,5 +59,24 @@ def delete_card(id_to_delete):
     return redirect(url_for('get_cards'))
 
 
+
+@app.route('/api/boards/<mydict>', methods=['POST'])
+def add_board(mydict):
+    mydict = jsonify(mydict)
+    board_handler.save_data(mydict)
+    return redirect(url_for('get_boards'))
+
+
+@app.route('/api/cards/<mydict>', methods=['POST'])
+def add_cards(mydict):
+    mydict = jsonify(mydict)
+    card_handler.save_data(mydict)
+    return redirect(url_for('get_boards'))
+
+
+
+
+
+
 if __name__ == '__main__':
     app.run()
