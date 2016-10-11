@@ -53,29 +53,24 @@ def delete_board(id_to_delete):
     return redirect(url_for('get_boards'))
 
 
-@app.route('/api/card/<id_to_delete>', methods=['DELETE'])
+@app.route('/api/cards/<id_to_delete>', methods=['DELETE'])
 def delete_card(id_to_delete):
     card_handler.delete_data(id_to_delete)
     return redirect(url_for('get_cards'))
 
 
-
 @app.route('/api/boards/<mydict>', methods=['POST'])
 def add_board(mydict):
-    mydict = jsonify(mydict)
-    board_handler.save_data(mydict)
+    import ast
+    board_handler.save_data(ast.literal_eval(mydict))
     return redirect(url_for('get_boards'))
 
 
 @app.route('/api/cards/<mydict>', methods=['POST'])
 def add_cards(mydict):
-    mydict = jsonify(mydict)
-    card_handler.save_data(mydict)
-    return redirect(url_for('get_boards'))
-
-
-
-
+    import ast
+    card_handler.save_data(ast.literal_eval(mydict))
+    return redirect(url_for('get_cards'))
 
 
 if __name__ == '__main__':
