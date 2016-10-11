@@ -68,7 +68,7 @@ def add_board(mydict):
 @app.route('/api/cards/<mydict>', methods=['POST'])
 def add_cards(mydict):
     card_handler.save_data(eval(mydict))
-    return redirect(url_for('get_cards')
+    return redirect(url_for('get_cards'))
 
 
 if __name__ == '__main__':
