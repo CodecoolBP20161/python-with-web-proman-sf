@@ -1,4 +1,4 @@
-from models import Card, Board
+from models.models import Card, Board
 
 
 # template class

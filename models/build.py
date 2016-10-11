@@ -1,5 +1,4 @@
 # build tables
-from models import*
 from connect_db import db
 
 db.connect()

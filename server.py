@@ -1,10 +1,22 @@
 from flask import Flask, render_template, jsonify
+from connect_db import db
 from table_handler import BoardHandler, CardHandler
 
 app = Flask('ProMan')
 
 board_handler = BoardHandler()
 card_handler = CardHandler()
+
+@app.before_request
+def before_request():
+    db.connect()
+
+
+@app.after_request
+def after_request(response):
+    db.close()
+    return response
+
 
 @app.route('/', methods=['GET'])
 def home():
@@ -45,7 +57,6 @@ def delete_board(id_to_delete):
 def delete_card(id_to_delete):
     card_handler.delete_data(id_to_delete)
     return redirect(url_for('get_cards'))
-
 
 
 
