@@ -25,7 +25,17 @@ class TableHandler:
 
 
 class BoardHandler(TableHandler):
-    pass
+    def __init__(self):
+        super().__init__(Board)
+
+    def save_data(self, input_dict):
+        self.table.create(**input_dict)
+
+    def delete_data(self, data_id):
+        self.table.delete_instance().where(self.table.id == data_id)
+
+    def get_data_by_filter(self):
+        pass
 
 
 class CardHandler(TableHandler):
