@@ -61,16 +61,14 @@ def delete_card(id_to_delete):
 
 @app.route('/api/boards/<mydict>', methods=['POST'])
 def add_board(mydict):
-    import ast
-    board_handler.save_data(ast.literal_eval(mydict))
+    board_handler.save_data(eval(mydict))
     return redirect(url_for('get_boards'))
 
 
 @app.route('/api/cards/<mydict>', methods=['POST'])
 def add_cards(mydict):
-    import ast
-    card_handler.save_data(ast.literal_eval(mydict))
-    return redirect(url_for('get_cards'))
+    card_handler.save_data(eval(mydict))
+    return redirect(url_for('get_cards', data_id=))
 
 
 if __name__ == '__main__':
