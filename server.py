@@ -1,7 +1,6 @@
 from flask import Flask, render_template, jsonify
-from table_handler import BoardHandler, CardHandler
 from connect_db import db
-
+from table_handler import BoardHandler, CardHandler
 
 app = Flask('ProMan')
 
@@ -12,8 +11,9 @@ def before_request():
 
 
 @app.after_request
-def after_request():
+def after_request(response):
     db.close()
+    return response
 
 
 @app.route('/', methods=['GET'])

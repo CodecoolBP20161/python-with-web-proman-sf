@@ -4,7 +4,7 @@ $(document).ready(function () {
 
     var get_board_id = function(array){
         if(array.length > 0){
-            var myArr = []
+            var myArr = [];
             for (var i in array){
                 myArr.push(array[i]["id"])
             }
