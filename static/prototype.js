@@ -1,12 +1,10 @@
-function Card(title, id) {
+function Card(title) {
     this.title = title;
-    this.id = id;
 }
 
-function Board(title, id) {
+function Board(title, boardID) {
     this.title = title;
-    this.id = id;
-    this.cards = [];
+    this.board = boardID
 
     this.create_card = function (title) {
         var new_card_btn = new Card(title, this.cards.length);
@@ -102,7 +100,7 @@ function apiHandler() {
     this.saveData = function (dataObj) {
         if(dataObj['table'] === 'board') {
             $.ajax({
-                url: "/api/boards/" + dataObj['title'],
+                url: "/api/boards/{'title': " + dataObj['title'] + "}",
                 type: "POST",
                 async: false,
                 dataType: 'json',
@@ -112,8 +110,8 @@ function apiHandler() {
             })
         } else if (dataObj['table'] === 'card') {
             var objForRoute = {
-                'title': dataObj['title'],
-                'board': dataObj['board']
+                "'title'": dataObj['title'],
+                "'board'": dataObj['board']
             };
             $.ajax({
                 url: "/api/card/" + objForRoute,

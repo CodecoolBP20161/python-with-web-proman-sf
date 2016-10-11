@@ -62,8 +62,8 @@ def delete_card(id_to_delete):
 
 @app.route('/api/boards/<mydict>', methods=['POST'])
 def add_board(mydict):
-    mydict = jsonify(mydict)
-    board_handler.save_data(mydict)
+    import ast
+    board_handler.save_data(ast.literal_eval(mydict))
     return redirect(url_for('get_boards'))
 
 

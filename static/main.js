@@ -71,6 +71,8 @@ $(document).ready(function () {
                 .appendTo($('#delete_card' + cards[i]['id']));
         }
         $('.card').show('slow');
+        
+        // delete card
         $('.glyphicon.glyphicon-remove-circle.card_del').click(function(event){
             event.stopPropagation();
             $to_delete = $(this).attr('id');
@@ -96,10 +98,11 @@ $(document).ready(function () {
     });
 
 
-    //popup save button
+    // save board
     $("#save").click(function(){
         var $board_title = $("#board_title").val();
-        var new_board = new Board($board_title, get_board_id(database.getData()));
+        var new_board = new Board($board_title);
+        new_board.table = 'board';
         database.saveData(new_board);
         $('.title').val("");
         $(".popup").dialog('close');
@@ -112,7 +115,7 @@ $(document).ready(function () {
         $(".popup2").dialog({show: 'fade'});
     });
 
-    
+    // save card
     $('#save_card').click(function(){
         var existing_cards = database.getData($current_board_id)['cards']
         $card_name = $('#card_title').val()
