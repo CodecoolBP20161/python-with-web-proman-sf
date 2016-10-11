@@ -1,4 +1,6 @@
 from flask import Flask, render_template
+from peewee import *
+from models import *
 
 
 app = Flask('ProMan')
@@ -17,6 +19,17 @@ def modify_data(table, id):
 @app.route('/api/boards/<id>', methods=['GET'])
 def get_data(id):
     pass
+
+
+@app.before_request
+def before_request():
+    db.connect()
+
+
+@app.after_request
+def after_request():
+    db.close()
+
 
 
 if __name__ == '__main__':
