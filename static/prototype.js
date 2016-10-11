@@ -10,7 +10,7 @@ function Board(title, id){
     this.cards = [];
 
     this.create_card = function (title) {
-        var new_card_btn = new Card(title, this.cards.length)
+        var new_card_btn = new Card(title, this.cards.length);
         this.cards.push(new_card_btn)
     }
 }
@@ -63,11 +63,30 @@ function LocalStorage(localStorage){
 
     this.modifyData = function (key,attribute,value) {
         var data = JSON.parse(this.localStorage[key]);
-        data[attribute] = value
+        data[attribute] = value;
         this.localStorage[key] = JSON.stringify(data);
     };
 
     this.deleteData = function (key) {
         this.localStorage.removeItem(key);
     };
-};
+}
+
+function apiHandler() {
+
+    this.getData = function () {
+        
+    };
+    
+    this.saveData = function () {
+        
+    };
+    
+    this.modifyData = function () {
+        
+    };
+    
+    this.deleteData = function () {
+        
+    };
+}
