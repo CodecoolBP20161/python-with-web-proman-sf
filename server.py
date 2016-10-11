@@ -1,6 +1,7 @@
 from flask import Flask, render_template
 from peewee import *
-from models import *
+from models import*
+import models.connect_db
 
 
 app = Flask('ProMan')
@@ -30,6 +31,9 @@ def before_request():
 def after_request():
     db.close()
 
+
+def connection_to_db(db):
+    return db
 
 
 if __name__ == '__main__':
