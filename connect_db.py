@@ -24,4 +24,4 @@ class DataBase():
         return PostgresqlDatabase(self.database, user=self.user, password=self.password)
 
 my_database = DataBase()
-db = my_databse.connect()
+db = my_database.connect()
