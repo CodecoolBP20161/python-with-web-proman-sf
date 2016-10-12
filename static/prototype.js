@@ -101,20 +101,24 @@ function apiHandler() {
     this.saveData = function (dataObj) {
         if(dataObj['table'] === 'board') {
             $.ajax({
-                url: "/api/boards/{'title': " + "\"" + dataObj['title']+"\"" + "}",
+                url: "/api/board-save",
+                data: JSON.stringify(dataObj),
                 type: "POST",
                 async: false,
                 dataType: 'json',
+                contentType: 'application/json; charset=utf-8',
                 success: function (boards) {
                     return boards
                 }
             })
         } else if (dataObj['table'] === 'card') {
             $.ajax({
-                url: "/api/cards/{'title': " +"\"" + dataObj['title'] +"\"" + ", 'board': " + "\""+ dataObj['board'] +"\""+ "}",
+                url: "/api/card-save",
+                data: JSON.stringify(dataObj),
                 type: "POST",
                 async: false,
                 dataType: 'json',
+                contentType: 'application/json; charset=utf-8',
                 success: function (boardWithCards) {
                     return boardWithCards
                 }
