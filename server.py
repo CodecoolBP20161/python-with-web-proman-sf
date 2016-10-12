@@ -33,7 +33,7 @@ def get_cards(data_id):
     cards = card_handler.get_data_by_filter('board', data_id)
     cards_in_dict = [{'id': str(i.id), 'title': i.title} for i in cards]
     board = board_handler.get_data_by_filter('id', data_id)
-    response = [{'id': str(i.id), 'title:': i.title, 'cards': cards_in_dict} for i in board]
+    response = [{'id': str(i.id), 'title': i.title, 'cards': cards_in_dict} for i in board]
     return jsonify(*response)
 
 

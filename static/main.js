@@ -34,6 +34,7 @@ $(document).ready(function () {
                 .appendTo($('#' + board[i]['id'] + '> div'));
         }
         $('.board').show('slow');
+        $('h3').hide()
 
         //delete board
         $('.glyphicon.glyphicon-remove-circle').click(function (event) {
@@ -56,6 +57,10 @@ $(document).ready(function () {
     };
 
     var listCards = function (key) {
+        $('h3').show()
+        var boardTitle = database.getData($current_board_id)['title'];
+        $('h3').html(boardTitle).data("board_id", $current_board_id)
+
         $('.card').empty();
         var cards = database.getData(key)['cards'].sort(function(a, b){
             return b['id'] - a['id'];
@@ -69,7 +74,10 @@ $(document).ready(function () {
             $('<span></span>').addClass('glyphicon glyphicon-remove-circle card_del').attr('id', cards[i]['id'])
                 .appendTo($('#delete_card' + cards[i]['id']));
         }
+
         $('.card').show('slow');
+
+
 
         // delete card
         $('.glyphicon.glyphicon-remove-circle.card_del').click(function(event){
