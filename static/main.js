@@ -35,6 +35,7 @@ $(document).ready(function () {
                 .appendTo($('#' + board[i]['id'] + '> div'));
         }
         $('.board').show('slow');
+        $('h3').hide()
 
         //delete board
         $('.glyphicon.glyphicon-remove-circle').click(function (event) {
@@ -57,13 +58,14 @@ $(document).ready(function () {
     };
 
     var listCards = function (key) {
+        $('h3').show()
+        var boardTitle = database.getData($current_board_id)['title'];
+        $('h3').html(boardTitle)
+
         $('.card').empty();
         var cards = database.getData(key)['cards'].sort(function(a, b){
             return b['id'] - a['id'];
         });
-        var boardTitle = database.getData($current_board_id)['title'];
-        console.log(boardTitle)
-        $('<h3>'  + boardTitle + '</h3>').appendTo($('#board-title'));
         for(var i in cards){
             $('<div></div>').addClass('col-md-3').attr('id', 'card' + cards[i]['id']).appendTo($('.card'));
             $('<div>' + cards[i]['title'] + '</div>').addClass('col-xs-12 col-sm-12 col-md-12 col-lg-12 card_block')
@@ -73,7 +75,10 @@ $(document).ready(function () {
             $('<span></span>').addClass('glyphicon glyphicon-remove-circle card_del').attr('id', cards[i]['id'])
                 .appendTo($('#delete_card' + cards[i]['id']));
         }
+
         $('.card').show('slow');
+
+
 
         // delete card
         $('.glyphicon.glyphicon-remove-circle.card_del').click(function(event){
