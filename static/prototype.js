@@ -1,16 +1,10 @@
 function Card(title, boardID) {
     this.title = title;
     this.board = boardID;
-
 }
 
 function Board(title) {
     this.title = title;
-
-    this.create_card = function (title) {
-        var new_card_btn = new Card(title, this.cards.length);
-        this.cards.push(new_card_btn)
-    }
 }
 
 
