@@ -1,4 +1,3 @@
-
 $(document).ready(function () {
     var database = new StorageState(new apiHandler());
 
