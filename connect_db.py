@@ -2,13 +2,13 @@ from peewee import PostgresqlDatabase
 from config import Config
 
 
-def singleton(cls):
+def singleton(my_class):
     instances = {}
 
     def getinstance():
-        if cls not in instances:
-            instances[cls] = cls()
-        return instances[cls]
+        if my_class not in instances:
+            instances[my_class] = my_class()
+        return instances[my_class]
     return getinstance
 
 
