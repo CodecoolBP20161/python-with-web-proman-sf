@@ -87,3 +87,7 @@ p {
     margin-bottom: 5px;
     margin-right: 5px;
 }
+
+.board-title {
+    color: orange;
+}

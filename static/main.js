@@ -61,6 +61,9 @@ $(document).ready(function () {
         var cards = database.getData(key)['cards'].sort(function(a, b){
             return b['id'] - a['id'];
         });
+        var boardTitle = database.getData($current_board_id)['title'];
+        console.log(boardTitle)
+        $('<h3>'  + boardTitle + '</h3>').appendTo($('#board-title'));
         for(var i in cards){
             $('<div></div>').addClass('col-md-3').attr('id', 'card' + cards[i]['id']).appendTo($('.card'));
             $('<div>' + cards[i]['title'] + '</div>').addClass('col-xs-12 col-sm-12 col-md-12 col-lg-12 card_block')
