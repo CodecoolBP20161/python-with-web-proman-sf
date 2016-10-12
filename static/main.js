@@ -1,7 +1,7 @@
 var database = new StorageState(new apiHandler());
 
 $(document).ready(function () {
-    
+
     listBoards();
 
 
@@ -11,13 +11,13 @@ $(document).ready(function () {
     });
 
 
-    // events on/for popup window    
+    // events on/for popup window
     // open new card popup window
     $("#new_card_btn").click(function () {
         $(".popup2").dialog({show: 'fade'});
     });
-    
-    
+
+
     // open new board popup window
     $("#btn").click(function () {
         $(".popup").dialog({show: 'fade'});
