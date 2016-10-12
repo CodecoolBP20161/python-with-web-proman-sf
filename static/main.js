@@ -60,7 +60,7 @@ $(document).ready(function () {
     var listCards = function (key) {
         $('h3').show()
         var boardTitle = database.getData($current_board_id)['title'];
-        $('h3').html(boardTitle)
+        $('h3').html(boardTitle).data("board_id", $current_board_id)
 
         $('.card').empty();
         var cards = database.getData(key)['cards'].sort(function(a, b){
