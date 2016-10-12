@@ -7,6 +7,7 @@ app = Flask('ProMan')
 board_handler = BoardHandler()
 card_handler = CardHandler()
 
+
 @app.before_request
 def before_request():
     db.connect()

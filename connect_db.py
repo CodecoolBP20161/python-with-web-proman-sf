@@ -23,5 +23,6 @@ class DataBase():
     def connect(self):
         return PostgresqlDatabase(self.database, user=self.user, password=self.password)
 
+
 my_database = DataBase()
 db = my_database.connect()
