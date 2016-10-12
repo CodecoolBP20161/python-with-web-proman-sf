@@ -1,4 +1,4 @@
-from flask import Flask, render_template, jsonify, redirect, url_for
+from flask import Flask, render_template, jsonify, redirect, url_for, request
 from connect_db import db
 from table_handler import BoardHandler, CardHandler
 
@@ -59,15 +59,15 @@ def delete_card(id_to_delete):
     return redirect(url_for('get_cards'))
 
 
-@app.route('/api/boards/<mydict>', methods=['POST'])
-def add_board(mydict):
-    board_handler.save_data(eval(mydict))
+@app.route('/api/board-save', methods=['POST'])
+def add_board():
+    board_handler.save_data(request.json)
     return redirect(url_for('get_boards'))
 
 
-@app.route('/api/cards/<mydict>', methods=['POST'])
-def add_cards(mydict):
-    card_handler.save_data(eval(mydict))
+@app.route('/api/card-save', methods=['POST'])
+def add_cards():
+    card_handler.save_data(request.json)
     return redirect(url_for('get_cards'))
 
 
