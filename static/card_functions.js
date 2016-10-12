@@ -35,11 +35,10 @@ var deleteCard = function (event) {
 };
 
 
-// need to correct after Tami's push
 // saving new card
 var saveCard = function () {
     $cardName = $('#card_title').val();
-    var newCardObject = new Card($cardName, $current_board_id);
+    var newCardObject = new Card($cardName, $('#board_name').data('board_id'));
     newCardObject.table = 'card';
     database.saveData(newCardObject);
     $('#card_title').val("");
