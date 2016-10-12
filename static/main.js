@@ -1,7 +1,7 @@
 var database = new StorageState(new apiHandler());
 
 $(document).ready(function () {
-
+    
     listBoards();
 
 

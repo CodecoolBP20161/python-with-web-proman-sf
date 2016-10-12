@@ -91,3 +91,14 @@ p {
 .popup, .popup2{
     display: none;
 }
+
+h3{
+    margin-top : 60px;
+    margin-bottom: -75px;
+    text-decoration: underline;
+    margin-left: 35px;
+    font-weight: bold;
+    color: black;
+    font-family: Helvetica, Arial, sans-serif;
+    text-transform: uppercase;
+}

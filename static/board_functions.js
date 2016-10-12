@@ -18,6 +18,7 @@ var listBoards = function () {
             .appendTo($('#' + board[i]['id'] + '> div'));
     }
     $('.board').show('slow');
+    $('h3').hide()
 
 
     //events on boards
