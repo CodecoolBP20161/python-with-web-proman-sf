@@ -6,7 +6,7 @@ var listCards = function (key) {
     $('#boards_btn').show();
 
     $('.card').empty();
-    
+
     var boardJSON = database.getData(key);
     $('h3').show();
     $('h3').html(boardJSON['title']).data("board_id", boardJSON['id']);
