@@ -33,9 +33,10 @@ var listCards = function (key) {
 
     // edit card
     $('.glyphicon.glyphicon-pencil').click(function () {
-        $(".popup3").dialog({show: 'fade'})
+        localStorage.setItem('card_id', $(this).data('card_id'));
+        localStorage.setItem('board_id', $(this).data('board_id'));
+        $(".popup3").dialog({show: 'fade'});
         $('#edit_card_title').val($(this).data('title'));
-        $('#edit_card_btn').click(editCard($(this).data('card_id'), $(this).data('board_id')));
     });
 };
 
@@ -61,13 +62,14 @@ var saveCard = function () {
     listCards(boardID);
 };
 
-var editCard = function (cardID, boardID) {
+var editCard = function () {
     var modifiedCard = {
-        id: cardID,
+        id: localStorage.getItem('card_id'),
         attribute: 'title',
         value: $('#edit_card_title').val()
     };
+    console.log('click');
     database.modifyData(modifiedCard);
-    $(".edit-card").dialog('close');
-    listCards(boardID);
+    $(".popup3").dialog('close');
+    listCards(localStorage.getItem('board_id'));
 };

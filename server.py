@@ -71,10 +71,11 @@ def add_cards():
     card_handler.save_data(request.json)
     return redirect(url_for('get_cards'))
 
+
 @app.route('/api/cards/modify-entry', methods=['PUT'])
 def modify_card():
     card_handler.modify_data(request.json["id"], request.json["attribute"], request.json["value"])
-    return redirect(url_for('get_cards'))
+    return 'success'
 
 if __name__ == '__main__':
     app.run()

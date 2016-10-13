@@ -153,7 +153,7 @@ function apiHandler() {
             dataType: 'json',
             contentType: 'application/json; charset=utf-8',
             success: function (response) {
-                return response
+                console.log(response)
             }
         })
        

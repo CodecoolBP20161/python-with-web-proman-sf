@@ -16,8 +16,8 @@ class TableHandler:
         return [i for i in self.table.select().where(getattr(self.table, attribute) == value)]
 
     def modify_data(self, data_id, attribute, value):
-        object_to_modify = self.table.select().where(self.table.id == data_id)
-        object_to_modify.attribute = value
+        object_to_modify = self.table.select().where(self.table.id == data_id)[0]
+        setattr(object_to_modify, attribute, value)
         object_to_modify.save()
 
     def get_all_data(self):
