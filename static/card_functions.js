@@ -62,6 +62,8 @@ var saveCard = function () {
     listCards(boardID);
 };
 
+
+// edit card
 var editCard = function () {
     var modifiedCard = {
         id: localStorage.getItem('card_id'),
