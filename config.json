@@ -1,5 +1,7 @@
 {
-"database": "",
-"database_user": "",
-"database_password": ""
+"database": "d83u5in5p8eeaj",
+"database_user": "yelaxzozsiwdnv",
+"database_password": "J56NxsYaD0Ua-gx9aDUnq6jkD8",
+"port": "5432",
+"host": "ec2-54-235-65-139.compute-1.amazonaws.com"
 }
