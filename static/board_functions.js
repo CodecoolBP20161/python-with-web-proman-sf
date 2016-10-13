@@ -57,3 +57,8 @@ var saveBoard = function () {
     $(".popup").dialog('close');
     listBoards()
 };
+
+
+// saving new card when press enter
+var pressEnter = function() {
+};

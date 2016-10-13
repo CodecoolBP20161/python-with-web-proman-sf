@@ -15,7 +15,7 @@ $(document).ready(function () {
     // open new card popup window
     $("#new_card_btn").click(function () {
         $(".popup2").dialog({show: 'fade'});
-    });
+        });
 
 
     // open new board popup window
@@ -27,7 +27,19 @@ $(document).ready(function () {
     // save board
     $("#save").click(saveBoard);
 
+    $(".popup").ready().keypress(function(e) {
+        if( e.keyCode == $.ui.keyCode.ENTER ) {
+            saveBoard();
+        };
+    });
+
 
     // save card
     $('#save_card').click(saveCard);
+
+    $(".popup2").ready().keypress(function(e) {
+        if( e.keyCode == $.ui.keyCode.ENTER ) {
+            saveCard();
+        };
+    });
 });
