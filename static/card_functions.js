@@ -1,4 +1,3 @@
-
 var listCards = function (key) {
     $('.board').hide();
     $('#btn').hide();
@@ -20,6 +19,8 @@ var listCards = function (key) {
             .attr('id', 'card_title' + cards[i]['id']).appendTo($('#card' + cards[i]['id']));
         $('<div></div>').addClass('col-xs-12 col-sm-12 col-md-12 col-lg-12 text-right card_span')
             .attr('id', 'delete_card' + cards[i]['id']).appendTo($('#card_title' + cards[i]['id']));
+        $('<span>&emsp;</span>').addClass('glyphicon glyphicon-pencil').attr('id', 'edit_card').data('title', cards[i]['title'])
+            .data('card_id', cards[i]['id']).data('board_id', boardJSON.id).appendTo($('#delete_card' + cards[i]['id']));
         $('<span></span>').addClass('glyphicon glyphicon-remove-circle card_del').attr('id', cards[i]['id'])
             .appendTo($('#delete_card' + cards[i]['id']));
     }
@@ -28,6 +29,15 @@ var listCards = function (key) {
 
     // delete card
     $('.glyphicon.glyphicon-remove-circle.card_del').click(deleteCard);
+
+
+    // edit card
+    $('.glyphicon.glyphicon-pencil').click(function () {
+        localStorage.setItem('card_id', $(this).data('card_id'));
+        localStorage.setItem('board_id', $(this).data('board_id'));
+        $(".popup3").dialog({show: 'fade'});
+        $('#edit_card_title').val($(this).data('title'));
+    });
 };
 
 
@@ -50,4 +60,18 @@ var saveCard = function () {
     $('#card_title').val("");
     $(".popup2").dialog('close');
     listCards(boardID);
+};
+
+
+// edit card
+var editCard = function () {
+    var modifiedCard = {
+        id: localStorage.getItem('card_id'),
+        attribute: 'title',
+        value: $('#edit_card_title').val()
+    };
+    console.log('click');
+    database.modifyData(modifiedCard);
+    $(".popup3").dialog('close');
+    listCards(localStorage.getItem('board_id'));
 };

@@ -4,7 +4,6 @@ $(document).ready(function () {
 
     listBoards();
 
-
     //boards btn click
     $("#boards_btn").click(function () {
         listBoards();
@@ -30,7 +29,7 @@ $(document).ready(function () {
     $(".popup").ready().keypress(function(e) {
         if( e.keyCode == $.ui.keyCode.ENTER ) {
             saveBoard();
-        };
+        }
     });
 
 
@@ -40,6 +39,9 @@ $(document).ready(function () {
     $(".popup2").ready().keypress(function(e) {
         if( e.keyCode == $.ui.keyCode.ENTER ) {
             saveCard();
-        };
-    });
+        }
+    });   
+    
+    
+    $('#edit_card_btn').click(editCard);
 });
