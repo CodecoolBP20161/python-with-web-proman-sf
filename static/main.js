@@ -41,5 +41,5 @@ $(document).ready(function () {
         if( e.keyCode == $.ui.keyCode.ENTER ) {
             saveCard();
         };
-    });
+    });    
 });

@@ -120,10 +120,6 @@ function apiHandler() {
         }
     };
 
-    this.modifyData = function () {
-
-    };
-
     this.deleteData = function (dataObj) {
         if(dataObj['table'] === 'board') {
             $.ajax({
@@ -147,4 +143,19 @@ function apiHandler() {
             })
         }
     };
+    
+    this.modifyData = function (dataObj) {
+        $.ajax({
+            url: "/api/cards/modify-entry",
+            data: JSON.stringify(dataObj),
+            type: "PUT",
+            async: false,
+            dataType: 'json',
+            contentType: 'application/json; charset=utf-8',
+            success: function (response) {
+                return response
+            }
+        })
+       
+    }
 }
