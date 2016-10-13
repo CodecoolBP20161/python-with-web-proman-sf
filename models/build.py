@@ -1,5 +1,11 @@
 # build tables
+import sys
+import os
+rel_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+sys.path.append(rel_path)
+
 from connect_db import db
+from models import Board, Card
 
 db.connect()
 
