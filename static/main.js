@@ -40,8 +40,15 @@ $(document).ready(function () {
         if( e.keyCode == $.ui.keyCode.ENTER ) {
             saveCard();
         }
-    });   
-    
-    
+    });
+
+
+    // edit card
     $('#edit_card_btn').click(editCard);
+    $(".popup3").ready().keypress(function(e) {
+        if( e.keyCode == $.ui.keyCode.ENTER ) {
+            editCard();
+        }
+    });
+
 });

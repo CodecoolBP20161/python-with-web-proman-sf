@@ -57,7 +57,7 @@ def delete_board(id_to_delete):
 @app.route('/api/cards/<id_to_delete>', methods=['DELETE'])
 def delete_card(id_to_delete):
     card_handler.delete_data(id_to_delete)
-    return redirect(url_for('get_cards'))
+    return 'successfully deleted card'
 
 
 @app.route('/api/board-save', methods=['POST'])
@@ -69,13 +69,13 @@ def add_board():
 @app.route('/api/card-save', methods=['POST'])
 def add_cards():
     card_handler.save_data(request.json)
-    return redirect(url_for('get_cards'))
+    return 'successfully added new card'
 
 
 @app.route('/api/cards/modify-entry', methods=['PUT'])
 def modify_card():
     card_handler.modify_data(request.json["id"], request.json["attribute"], request.json["value"])
-    return 'success'
+    return 'successfully modified card'
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0')
