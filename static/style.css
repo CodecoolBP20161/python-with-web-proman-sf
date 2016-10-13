@@ -7,7 +7,6 @@
 
 body {
     background-image: url('/static/img/sf.jpg');
-    background-size: 100%, 100%;
     background-attachment: fixed;
     background-size:100% auto;
 }
@@ -33,43 +32,41 @@ p {
 
 .col-xs-12.col-sm-12.col-md-12.col-lg-12.board_block {
     height: 120px;
-    background: url('/static/img/board5.jpg');
+    background: url('/static/img/weather.png');
     font-size: 15px;
     font-family: Helvetica, Arial, sans-serif;
     font-style: oblique;
     font-weight: bold;
     color: black;
-    border-radius: 20px;
     word-break: break-all;
     padding-left: 10px;
     padding-right: 10px;
     padding-top: 10px;
     padding-bottom: 10px;
-    border-radius: 20px;
+    border-radius: 6px;
     margin-bottom: 10px;
     margin-top: 10px;
-    box-shadow: 10px 10px 5px grey;
+    box-shadow: 5px 5px 25px black;
 
 }
 
 .col-xs-12.col-sm-12.col-md-12.col-lg-12.card_block{
     height: 120px;
-    background: url('/static/img/card3.jpg');
+    background: url('/static/img/food.png');
     font-size: 15px;
     font-family: Helvetica, Arial, sans-serif;
     font-style: oblique;
     font-weight: bold;
     color: black;
-    border-radius: 20px;
     word-break: break-all;
     padding-left: 10px;
     padding-right: 10px;
     padding-top: 10px;
     padding-bottom: 10px;
-    border-radius: 20px;
+    border-radius: 6px;
     margin-bottom: 10px;
     margin-top: 10px;
-    box-shadow: 10px 10px 5px grey;
+    box-shadow: 5px 5px 25px black;
 
 
 }
@@ -100,11 +97,10 @@ h3{
     color: white;
     font-family: Helvetica, Arial, sans-serif;
     text-transform: uppercase;
-    border-radius: 25px;
     background-color: #4682B4;
     border: 10px solid #4682B4;
-    box-shadow: 10px 10px 5px grey;
-    border-radius: 25px;
+    box-shadow: 5px 5px 25px black;
+    border-radius: 6px;
     display: inline-block;
 
 }
