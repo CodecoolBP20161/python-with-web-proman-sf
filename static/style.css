@@ -2,19 +2,22 @@
 .board {
     display: none;
     margin-top: 70px;
+    padding-bottom: 10px;
 
 }
 
 body {
     background-image: url('/static/img/sf.jpg');
     background-attachment: fixed;
-    background-size:100% auto;
+    background-size: cover;
 }
 
 .card {
     display: none;
     margin-top: 10px;
+    padding-bottom: 10px;
 }
+
 
 .navbar{
     background : #4682B4;
